@@ -35,7 +35,7 @@ class Curd {
       print(respos.body);
       print(respos.statusCode);
       print('============');
-      if (respos.statusCode == 200 || respos.statusCode == 201) {
+      if (respos.statusCode >= 200) {
         dynamic body = jsonDecode(respos.body);
         print(' body :  $body');
         return body;

@@ -1,83 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
+import 'package:real_easte_app/domin_layer/models/dataCard.dart';
+import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/detalis_screen/detalis_screen.dart';
+import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/homeController.dart';
 
 class MostVisitedRealEstate extends StatelessWidget {
-  const MostVisitedRealEstate({super.key, this.future, required this.title});
-  final Future<dynamic>? future;
+  const MostVisitedRealEstate(
+      {super.key,
+      required this.title,
+      required this.statusRequest,
+      required this.data});
+  final StatusRequest statusRequest;
+  final PropertyCardModel? data;
   final String title;
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      builder: (ctx, snapshot) {
-        // Checking if future is resolved or not
-        if (snapshot.connectionState == ConnectionState.done) {
-          // If we got an error
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                '${snapshot.error} occurred',
-                style: TextStyle(fontSize: 18),
-              ),
-            );
-
-            // if we got our data
-          } else if (snapshot.hasData) {
-            // Extracting data from snapshot object
-
-            return Container(
-              alignment: Alignment.center,
-              height: 210,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Text(
-                      title,
-                      style: MangeStyles().getRegularStyle(
-                        color: ColorManager.kTextblack,
-                        fontSize: FontSize.s18,
-                      ),
+    return GetBuilder<HomeController>(
+      builder: (controller) {
+        return HandlingDataView(
+          statusRequest: statusRequest,
+          widget: Container(
+            alignment: Alignment.center,
+            height: 210,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text(
+                    title,
+                    style: MangeStyles().getRegularStyle(
+                      color: ColorManager.kTextblack,
+                      fontSize: FontSize.s18,
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 8, //controller.catogeryModels?.data?.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CardProperty(
+                        properties: data!.properties![index],
+                      );
+                    },
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 8, //controller.catogeryModels?.data?.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return CardProperty();
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-        }
-
-        // Displaying LoadingSpinner to indicate waiting state
-        return Center(
-          child: CircularProgressIndicator(),
+                ),
+              ],
+            ),
+          ),
         );
       },
-
-      // Future that needs to be resolved
-      // inorder to display something on the Canvas
-      future: future,
     );
   }
 }
 
 class CardProperty extends StatelessWidget {
-  const CardProperty({super.key});
-
+  const CardProperty({super.key, required this.properties});
+  final Properties properties;
   @override
   Widget build(BuildContext context) {
     return InkWell(

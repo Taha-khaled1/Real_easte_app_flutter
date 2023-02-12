@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:real_easte_app/data_layer/function_resbon.dart/home_res.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
 import 'package:real_easte_app/presentation_layer/more_product/more_product.dart';
@@ -56,6 +57,7 @@ class HomeScreen extends StatelessWidget {
                             ],
                           ),
                           child: TextField(
+                            onChanged: (value) {},
                             style: TextStyle(
                                 color: ColorManager.kTextblack, fontSize: 20),
                             decoration: InputDecoration(
@@ -89,22 +91,21 @@ class HomeScreen extends StatelessWidget {
                 ),
                 MostVisitedRealEstate(
                   title: 'العقارات الأكثر زيارة',
-                  future: FUN(),
+                  data: controller.propertyCardModel,
+                  statusRequest: controller.statusRequest,
                 ),
-                SizedBox(
-                  height: 17,
-                ),
-                MostVisitedRealEstate(
-                  title: 'عقارات أضيفت حديثا',
-                  future: FUN(),
-                ),
-                SizedBox(
-                  height: 17,
-                ),
-                MostVisitedRealEstate(
-                  title: 'العقارات الموصي بها',
-                  future: FUN(),
-                ),
+                // SizedBox(
+                //   height: 17,
+                // ),
+                // MostVisitedRealEstate(
+                //   title: 'عقارات أضيفت حديثا',
+                // ),
+                // SizedBox(
+                //   height: 17,
+                // ),
+                // MostVisitedRealEstate(
+                //   title: 'العقارات الموصي بها',
+                // ),
                 SizedBox(
                   height: 17,
                 ),
@@ -112,7 +113,6 @@ class HomeScreen extends StatelessWidget {
                   title2: 'منازل',
                   iscity: false,
                   title: 'انواع العقارات',
-                  future: FUN(),
                 ),
                 SizedBox(
                   height: 15,
@@ -120,7 +120,6 @@ class HomeScreen extends StatelessWidget {
                 TypeCard(
                   title2: 'ابو ظبي',
                   title: 'اكثر المدن التي تحتوي علي عقارات',
-                  future: FUN(),
                   iscity: true,
                 ),
                 SizedBox(

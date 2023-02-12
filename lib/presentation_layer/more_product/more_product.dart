@@ -50,7 +50,7 @@ class MoreProductScreen extends StatelessWidget {
                     ),
                     itemCount: 10,
                     itemBuilder: (BuildContext context, int index) {
-                      return CardProperty();
+                      return SizedBox(); //CardProperty();
                     },
                   ),
                 ),

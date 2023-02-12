@@ -125,8 +125,6 @@ class PropertyDetails {
   double? latitude;
   String? address;
   String? sellerPhone;
-  String? createdAt;
-  String? updatedAt;
   int? propertyId;
 
   PropertyDetails(
@@ -143,8 +141,6 @@ class PropertyDetails {
       this.latitude,
       this.address,
       this.sellerPhone,
-      this.createdAt,
-      this.updatedAt,
       this.propertyId});
 
   PropertyDetails.fromJson(Map<String, dynamic> json) {
@@ -161,8 +157,6 @@ class PropertyDetails {
     latitude = json['latitude'];
     address = json['address'];
     sellerPhone = json['seller_phone'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
     propertyId = json['property_id'];
   }
 
@@ -181,8 +175,6 @@ class PropertyDetails {
     data['latitude'] = this.latitude;
     data['address'] = this.address;
     data['seller_phone'] = this.sellerPhone;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
     data['property_id'] = this.propertyId;
     return data;
   }
@@ -192,22 +184,13 @@ class Images {
   int? id;
   int? propertyId;
   String? imagePath;
-  String? createdAt;
-  String? updatedAt;
 
-  Images(
-      {this.id,
-      this.propertyId,
-      this.imagePath,
-      this.createdAt,
-      this.updatedAt});
+  Images({this.id, this.propertyId, this.imagePath});
 
   Images.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     propertyId = json['property_id'];
     imagePath = json['image_path'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
@@ -215,8 +198,6 @@ class Images {
     data['id'] = this.id;
     data['property_id'] = this.propertyId;
     data['image_path'] = this.imagePath;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
     return data;
   }
 }
@@ -225,22 +206,13 @@ class Facilities {
   int? id;
   int? propertyId;
   String? facility;
-  String? createdAt;
-  String? updatedAt;
 
-  Facilities(
-      {this.id,
-      this.propertyId,
-      this.facility,
-      this.createdAt,
-      this.updatedAt});
+  Facilities({this.id, this.propertyId, this.facility});
 
   Facilities.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     propertyId = json['property_id'];
     facility = json['facility'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
@@ -248,8 +220,6 @@ class Facilities {
     data['id'] = this.id;
     data['property_id'] = this.propertyId;
     data['facility'] = this.facility;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
     return data;
   }
 }
