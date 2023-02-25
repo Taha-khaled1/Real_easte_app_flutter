@@ -4,7 +4,7 @@ import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
 import 'package:real_easte_app/presentation_layer/components/custombutten.dart';
 import 'package:real_easte_app/presentation_layer/components/customtextfild.dart';
-import 'package:real_easte_app/presentation_layer/more_product/more_product.dart';
+import 'package:real_easte_app/presentation_layer/screen/more_product/more_product.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/strings_manager.dart';

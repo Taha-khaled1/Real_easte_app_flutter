@@ -1,17 +1,17 @@
 class PropertyCardModel {
   int? statusCode;
   String? message;
-  List<Properties>? properties;
+  List<Property>? property;
 
-  PropertyCardModel({this.statusCode, this.message, this.properties});
+  PropertyCardModel({this.statusCode, this.message, this.property});
 
   PropertyCardModel.fromJson(Map<String, dynamic> json) {
     statusCode = json['status_code'];
     message = json['message'];
-    if (json['properties'] != null) {
-      properties = <Properties>[];
-      json['properties'].forEach((v) {
-        properties!.add(new Properties.fromJson(v));
+    if (json['property'] != null) {
+      property = <Property>[];
+      json['property'].forEach((v) {
+        property!.add(new Property.fromJson(v));
       });
     }
   }
@@ -20,14 +20,14 @@ class PropertyCardModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['status_code'] = this.statusCode;
     data['message'] = this.message;
-    if (this.properties != null) {
-      data['properties'] = this.properties!.map((v) => v.toJson()).toList();
+    if (this.property != null) {
+      data['property'] = this.property!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Properties {
+class Property {
   int? id;
   String? name;
   String? picture;
@@ -40,7 +40,7 @@ class Properties {
   String? createdAt;
   String? updatedAt;
 
-  Properties(
+  Property(
       {this.id,
       this.name,
       this.picture,
@@ -53,7 +53,7 @@ class Properties {
       this.createdAt,
       this.updatedAt});
 
-  Properties.fromJson(Map<String, dynamic> json) {
+  Property.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     picture = json['picture'];

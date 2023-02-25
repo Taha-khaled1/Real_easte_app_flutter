@@ -10,7 +10,7 @@ getPropertyMosetvisetRespon() async {
   var respons = await curd.getrequest(
     APiMange.mostview,
   );
-  print(respons);
+
   return respons;
 }
 
@@ -19,7 +19,6 @@ getPropertyNewRespon() async {
   var respons = await curd.getrequest(
     APiMange.newproperty,
   );
-  print(respons);
   return respons;
 }
 
@@ -28,7 +27,6 @@ getPropertyRecommendRespon() async {
   var respons = await curd.getrequest(
     APiMange.recommendhotel,
   );
-  print(respons);
   return respons;
 }
 
@@ -37,7 +35,7 @@ getCatogeryTypeRespon() async {
   var respons = await curd.getrequest(
     APiMange.catogerydata,
   );
-  print(respons);
+
   return respons;
 }
 
@@ -46,7 +44,7 @@ getForCounteryRespon() async {
   var respons = await curd.getrequest(
     APiMange.forcountry,
   );
-  print(respons);
+
   return respons;
 }
 

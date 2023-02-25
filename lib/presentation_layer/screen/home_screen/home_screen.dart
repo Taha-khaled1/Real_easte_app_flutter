@@ -3,12 +3,15 @@ import 'package:get/get.dart';
 import 'package:real_easte_app/data_layer/function_resbon.dart/home_res.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
-import 'package:real_easte_app/presentation_layer/more_product/more_product.dart';
+import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
+import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/propertyType.dart';
+import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/typeCard.dart';
+import 'package:real_easte_app/presentation_layer/screen/more_product/more_product.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/detalis_screen/detalis_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/homeController.dart';
-import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/Filtter/Filtter_screen.dart';
+import 'package:real_easte_app/presentation_layer/screen/Filtter/Filtter_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/MostVisitedRealEstate.dart';
 import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
 
@@ -89,38 +92,76 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                MostVisitedRealEstate(
-                  title: 'العقارات الأكثر زيارة',
-                  data: controller.propertyCardModel,
-                  statusRequest: controller.statusRequest,
+                GetBuilder<HomeController>(
+                  builder: (controller) {
+                    return HandlingDataView(
+                      statusRequest: controller.statusRequest,
+                      widget: MostVisitedRealEstate(
+                        title: 'العقارات الأكثر زيارة',
+                        data: controller.propertyCardModel,
+                      ),
+                    );
+                  },
                 ),
-                // SizedBox(
-                //   height: 17,
-                // ),
-                // MostVisitedRealEstate(
-                //   title: 'عقارات أضيفت حديثا',
-                // ),
-                // SizedBox(
-                //   height: 17,
-                // ),
-                // MostVisitedRealEstate(
-                //   title: 'العقارات الموصي بها',
-                // ),
                 SizedBox(
                   height: 17,
                 ),
-                TypeCard(
-                  title2: 'منازل',
-                  iscity: false,
-                  title: 'انواع العقارات',
+                GetBuilder<HomeController>(
+                  builder: (controller) {
+                    return HandlingDataView(
+                      statusRequest: controller.statusRequest2,
+                      widget: MostVisitedRealEstate(
+                        title: 'العقارات اضيفة حديثا',
+                        data: controller.propertyCardModel2,
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: 17,
+                ),
+                GetBuilder<HomeController>(
+                  builder: (controller) {
+                    return HandlingDataView(
+                      statusRequest: controller.statusRequest3,
+                      widget: MostVisitedRealEstate(
+                        title: 'العقارات الموصي بها',
+                        data: controller.propertyCardModel3,
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: 17,
+                ),
+                GetBuilder<HomeController>(
+                  builder: (controller) {
+                    return HandlingDataView(
+                      statusRequest: controller.statusRequest4,
+                      widget: TypeCard(
+                        title2: 'منازل',
+                        iscity: false,
+                        title: 'انواع العقارات',
+                        catogerys: controller.catogeryModel?.catogerys! ?? [],
+                      ),
+                    );
+                  },
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                TypeCard(
-                  title2: 'ابو ظبي',
-                  title: 'اكثر المدن التي تحتوي علي عقارات',
-                  iscity: true,
+                GetBuilder<HomeController>(
+                  builder: (controller) {
+                    return HandlingDataView(
+                      statusRequest: controller.statusRequest5,
+                      widget: TypeCard(
+                        catogerys: controller.countryModel?.mostCountries ?? [],
+                        title2: 'ابو ظبي',
+                        title: 'اكثر المدن التي تحتوي علي عقارات',
+                        iscity: true,
+                      ),
+                    );
+                  },
                 ),
                 SizedBox(
                   height: 7,
@@ -128,161 +169,6 @@ class HomeScreen extends StatelessWidget {
               ],
             );
           },
-        ),
-      ),
-    );
-  }
-}
-
-class TypeCard extends StatelessWidget {
-  const TypeCard({
-    Key? key,
-    required this.title,
-    this.future,
-    this.iscity = false,
-    required this.title2,
-  }) : super(key: key);
-  final String title, title2;
-  final Future<dynamic>? future;
-  final bool iscity;
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      builder: (ctx, snapshot) {
-        // Checking if future is resolved or not
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          // If we got an error
-
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                '${snapshot.error} occurred',
-                style: TextStyle(fontSize: 18),
-              ),
-            );
-
-            // if we got our data
-
-          } else if (snapshot.hasData) {
-            // Extracting data from snapshot object
-
-            return Container(
-              alignment: Alignment.center,
-              height: iscity ? 350 : 210,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Text(
-                      title,
-                      style: MangeStyles().getRegularStyle(
-                        color: ColorManager.kTextblack,
-                        fontSize: FontSize.s18,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-
-                      itemCount: 8, //controller.catogeryModels?.data?.length,
-
-                      itemBuilder: (BuildContext context, int index) {
-                        return PropertyType(
-                          iscity: iscity,
-                          image: 'assets/images/hotel2.jpg',
-                          haigh: 180,
-                          id: 1,
-                          title: title2,
-                          width: 290,
-                        );
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                ],
-              ),
-            );
-          }
-        }
-
-        // Displaying LoadingSpinner to indicate waiting state
-
-        return Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-
-      // Future that needs to be resolved
-
-      // inorder to display something on the Canvas
-
-      future: future,
-    );
-  }
-}
-
-Future FUN() async {
-  await Future.delayed(
-    Duration(microseconds: 500),
-  );
-  return '';
-}
-
-class PropertyType extends StatelessWidget {
-  const PropertyType(
-      {super.key,
-      required this.width,
-      required this.haigh,
-      required this.id,
-      required this.image,
-      required this.title,
-      required this.iscity});
-  final double width, haigh, id;
-  final String image, title;
-  final bool iscity;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 15),
-      alignment: iscity ? Alignment.center : Alignment.bottomRight,
-      height: haigh,
-      width: width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(image),
-          // image: NetworkImage(
-          //   img!.split(',').first,
-          // ),
-          fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.darken),
-        ),
-        color: ColorManager.kTextblack,
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFF656565).withOpacity(0.15),
-            blurRadius: 2.0,
-            spreadRadius: 1.0,
-//           offset: Offset(4.0, 10.0)
-          ),
-        ],
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          title,
-          style: MangeStyles().getBoldStyle(
-            color: ColorManager.ktextw,
-            fontSize: FontSize.s27,
-          ),
         ),
       ),
     );

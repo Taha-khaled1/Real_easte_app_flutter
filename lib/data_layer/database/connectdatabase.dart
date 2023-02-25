@@ -28,23 +28,28 @@ Map<String, String> myheaders3 = {
 };
 
 class Curd {
-  getrequest(String url) async {
+  getrequest(String url,
+      {bool? encode, Map<String, String>? myheadersres}) async {
     try {
-      Response respos = await http.get(Uri.parse(url), headers: myheaders3);
-      print('============');
-      print(respos.body);
-      print(respos.statusCode);
-      print('============');
-      if (respos.statusCode >= 200) {
-        dynamic body = jsonDecode(respos.body);
-        print(' body :  $body');
-        return body;
+      if (await checkInternet()) {
+        var respos = await http.get(Uri.parse(url), headers: myheadersres);
+        print('----------------------------------------------------------');
+        print(respos.statusCode);
+        print(respos.body);
+        if (respos.statusCode == 200 || respos.statusCode == 201) {
+          dynamic body = jsonDecode(respos.body);
+          return body;
+        } else {
+          print('serverfailure');
+          return StatusRequest.erorr;
+        }
       } else {
-        print('erorr');
+        print('offline');
+        return StatusRequest.offlinefailure;
       }
     } catch (e) {
-      // ignore: avoid_print
-      print('$e');
+      print('Catch : $e');
+      return StatusRequest.serverfailure;
     }
   }
 
@@ -64,7 +69,7 @@ class Curd {
           return body;
         } else {
           print('serverfailure');
-          return StatusRequest.none;
+          return StatusRequest.erorr;
         }
       } else {
         print('offline');
@@ -127,7 +132,7 @@ class Curd {
     }
   }
 
-  strequestforFile(
+  postrequestforFile(
     String url,
     namepost,
     Map data,

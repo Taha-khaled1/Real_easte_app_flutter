@@ -1,6 +1,8 @@
 class APiMange {
-  static const String baseurl = "http://127.0.0.1:8000/api";
-  static const String baseurlImage = "http://127.0.0.1:8000";
+  // static const String baseurl = "http://127.0.0.1:8000/api";
+  // static const String baseurlImage = "http://127.0.0.1:8000";
+  static const String baseurl = "https://blossomblue.realestate/public/api";
+  static const String baseurlImage = "https://blossomblue.realestate/public";
   static const String newproperty = "$baseurl/newproperty";
   static const String recommendhotel = "$baseurl/recommendhotel";
   static const String mostview = "$baseurl/mostview";

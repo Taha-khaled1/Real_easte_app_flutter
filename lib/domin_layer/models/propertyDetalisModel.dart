@@ -1,7 +1,7 @@
 class PropertyDetalisModel {
   int? statusCode;
   String? message;
-  Property? property;
+  PropertyD? property;
 
   PropertyDetalisModel({this.statusCode, this.message, this.property});
 
@@ -9,7 +9,7 @@ class PropertyDetalisModel {
     statusCode = json['status_code'];
     message = json['message'];
     property = json['property'] != null
-        ? new Property.fromJson(json['property'])
+        ? new PropertyD.fromJson(json['property'])
         : null;
   }
 
@@ -24,7 +24,7 @@ class PropertyDetalisModel {
   }
 }
 
-class Property {
+class PropertyD {
   int? id;
   String? name;
   String? picture;
@@ -37,10 +37,11 @@ class Property {
   String? createdAt;
   String? updatedAt;
   PropertyDetails? propertyDetails;
-  List<Images>? images;
-  List<Facilities>? facilities;
+  List<String>? images;
+  List<String>? facilities;
+  User? user;
 
-  Property(
+  PropertyD(
       {this.id,
       this.name,
       this.picture,
@@ -54,9 +55,10 @@ class Property {
       this.updatedAt,
       this.propertyDetails,
       this.images,
-      this.facilities});
+      this.facilities,
+      this.user});
 
-  Property.fromJson(Map<String, dynamic> json) {
+  PropertyD.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     picture = json['picture'];
@@ -71,18 +73,9 @@ class Property {
     propertyDetails = json['property_details'] != null
         ? new PropertyDetails.fromJson(json['property_details'])
         : null;
-    if (json['images'] != null) {
-      images = <Images>[];
-      json['images'].forEach((v) {
-        images!.add(new Images.fromJson(v));
-      });
-    }
-    if (json['facilities'] != null) {
-      facilities = <Facilities>[];
-      json['facilities'].forEach((v) {
-        facilities!.add(new Facilities.fromJson(v));
-      });
-    }
+    images = json['images'].cast<String>();
+    facilities = json['facilities'].cast<String>();
+    user = json['user'] != null ? new User.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -101,11 +94,10 @@ class Property {
     if (this.propertyDetails != null) {
       data['property_details'] = this.propertyDetails!.toJson();
     }
-    if (this.images != null) {
-      data['images'] = this.images!.map((v) => v.toJson()).toList();
-    }
-    if (this.facilities != null) {
-      data['facilities'] = this.facilities!.map((v) => v.toJson()).toList();
+    data['images'] = this.images;
+    data['facilities'] = this.facilities;
+    if (this.user != null) {
+      data['user'] = this.user!.toJson();
     }
     return data;
   }
@@ -180,46 +172,63 @@ class PropertyDetails {
   }
 }
 
-class Images {
+class User {
   int? id;
-  int? propertyId;
-  String? imagePath;
+  String? name;
+  String? country;
+  String? userType;
+  String? phone;
+  int? numberAds;
+  String? email;
+  String? status;
+  String? emailVerifiedAt;
+  String? phoneVerifiedAt;
+  String? createdAt;
+  String? updatedAt;
 
-  Images({this.id, this.propertyId, this.imagePath});
+  User(
+      {this.id,
+      this.name,
+      this.country,
+      this.userType,
+      this.phone,
+      this.numberAds,
+      this.email,
+      this.status,
+      this.emailVerifiedAt,
+      this.phoneVerifiedAt,
+      this.createdAt,
+      this.updatedAt});
 
-  Images.fromJson(Map<String, dynamic> json) {
+  User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    propertyId = json['property_id'];
-    imagePath = json['image_path'];
+    name = json['name'];
+    country = json['country'];
+    userType = json['user_type'];
+    phone = json['phone'];
+    numberAds = json['number_ads'];
+    email = json['email'];
+    status = json['status'];
+    emailVerifiedAt = json['email_verified_at'];
+    phoneVerifiedAt = json['phone_verified_at'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['property_id'] = this.propertyId;
-    data['image_path'] = this.imagePath;
-    return data;
-  }
-}
-
-class Facilities {
-  int? id;
-  int? propertyId;
-  String? facility;
-
-  Facilities({this.id, this.propertyId, this.facility});
-
-  Facilities.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    propertyId = json['property_id'];
-    facility = json['facility'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['property_id'] = this.propertyId;
-    data['facility'] = this.facility;
+    data['name'] = this.name;
+    data['country'] = this.country;
+    data['user_type'] = this.userType;
+    data['phone'] = this.phone;
+    data['number_ads'] = this.numberAds;
+    data['email'] = this.email;
+    data['status'] = this.status;
+    data['email_verified_at'] = this.emailVerifiedAt;
+    data['phone_verified_at'] = this.phoneVerifiedAt;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
     return data;
   }
 }
