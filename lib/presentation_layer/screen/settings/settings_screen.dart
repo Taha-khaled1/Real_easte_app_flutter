@@ -72,7 +72,7 @@ class AllListtileControllerBoard extends StatelessWidget {
                   ), //assets/icons/Frame 26.svg
                   titel: 'الملف الشخصي',
                   onTap: () {
-                    Get.to(EditProfileScreen());
+                    Get.to(() => EditProfileScreen());
                   },
                 ),
               CustomListtile(

@@ -11,7 +11,7 @@ class PropertDetalisController extends GetxController {
   final GlobalKey<FormState> formkeysigin = GlobalKey();
 
   String? descr, phoner, emailr, namer, idr;
-
+  int idProperty = Get.arguments['id'];
   PropertyDetalisModel? propertyDetalisModel;
   late StatusRequest statusRequest;
   getPropertyDetalis(int id) async {
@@ -73,7 +73,8 @@ class PropertDetalisController extends GetxController {
 
   @override
   void onInit() {
-    getPropertyDetalis(Get.arguments['id']);
+    getPropertyDetalis(idProperty);
+    updateView(idProperty);
     super.onInit();
   }
 }

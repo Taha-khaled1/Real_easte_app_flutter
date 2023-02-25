@@ -1,9 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AddPropertyController extends GetxController {
-  String? propertyType, propertyclassfication, propertydirection, propertyrentl;
+  String? propertyType,
+      propertyclassfication,
+      propertydirection,
+      propertyrentl,
+      name,
+      city,
+      space,
+      des,
+      price;
   int? roomnumber, tolitnumber;
+  File? image;
   final GlobalKey<FormState> formkeysigin = GlobalKey();
   changetypepro(String propertyTypevalue) {
     propertyType = propertyTypevalue;
@@ -34,4 +45,5 @@ class AddPropertyController extends GetxController {
     tolitnumber = tolitnumbe;
     update();
   }
+  Li
 }

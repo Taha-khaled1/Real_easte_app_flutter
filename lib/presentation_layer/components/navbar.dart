@@ -18,7 +18,7 @@ class _ExampleState extends State<Example> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     AddProperty(),
-    EditProfileScreen(),
+    //  EditProfileScreen(),
     SettingsScreen(),
   ];
   @override
@@ -37,10 +37,10 @@ class _ExampleState extends State<Example> {
             Icons.add,
             color: ColorManager.kTextblack,
           ),
-          Icon(
-            Icons.person,
-            color: ColorManager.kTextblack,
-          ),
+          // Icon(
+          //   Icons.person,
+          //   color: ColorManager.kTextblack,
+          // ),
           Icon(
             Icons.settings,
             color: ColorManager.kTextblack,

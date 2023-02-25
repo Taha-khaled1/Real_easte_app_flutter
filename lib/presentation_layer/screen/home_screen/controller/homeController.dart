@@ -97,6 +97,9 @@ class HomeController extends GetxController {
       if (statusRequest4 == StatusRequest.success) {
         print('----------------------------------');
         catogeryModel = await CatogeryModel.fromJson(response);
+        for (Catogerys element in catogeryModel!.catogerys!) {
+          catogerNameslsit.add(element.name!);
+        }
       } else {
         statusRequest4 = StatusRequest.failure;
       }
@@ -135,3 +138,5 @@ class HomeController extends GetxController {
     super.onInit();
   }
 }
+
+List<String> catogerNameslsit = [];

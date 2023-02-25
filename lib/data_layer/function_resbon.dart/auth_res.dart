@@ -43,3 +43,26 @@ ChangepassRes(oldpass, newpass, newpassConfirm) async {
   print(respons);
   return respons;
 }
+
+userDataResp() async {
+  Curd curd = Curd();
+  var respons = await curd.getrequest(
+    APiMange.userData,
+    encode: true,
+    myheadersres: myheaders,
+  );
+  print(respons);
+  return respons;
+}
+
+ChangeUserDataRes(String name, String country, String phone) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.changeuserData,
+    {"name": name, "country": country, "phone": phone},
+    encode: true,
+    myheadersres: myheaders,
+  );
+
+  return respons;
+}
