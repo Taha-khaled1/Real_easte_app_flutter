@@ -14,6 +14,7 @@ import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/
 import 'package:real_easte_app/presentation_layer/screen/Filtter/Filtter_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/MostVisitedRealEstate.dart';
 import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
+import 'package:real_easte_app/presentation_layer/screen/test.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -60,15 +61,20 @@ class HomeScreen extends StatelessWidget {
                             ],
                           ),
                           child: TextField(
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              controller.Search = value.toString();
+                            },
                             style: TextStyle(
-                                color: ColorManager.kTextblack, fontSize: 20),
+                                color: ColorManager.ktextblackk, fontSize: 20),
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'البحث هنا ......',
                               prefixIcon: IconButton(
                                   onPressed: () {
-                                    Get.to(() => MoreProductScreen());
+                                    Get.to(
+                                      () => MoreProductScreen(),
+                                      arguments: {'search': controller.Search},
+                                    );
                                   },
                                   icon: Icon(
                                     Icons.search,

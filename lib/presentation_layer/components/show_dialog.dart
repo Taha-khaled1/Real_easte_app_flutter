@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-void showDilog(BuildContext context, String massg, {QuickAlertType? type}) {
+void showDilog(BuildContext context, String massg,
+    {QuickAlertType? type, bool? butn, void x}) {
   QuickAlert.show(
     context: context,
     type: type ?? QuickAlertType.success,
@@ -10,5 +12,15 @@ void showDilog(BuildContext context, String massg, {QuickAlertType? type}) {
     confirmBtnText: 'موافق',
     cancelBtnText: 'No',
     confirmBtnColor: Colors.green,
+    onConfirmBtnTap: () {
+      x;
+      if (butn == true) {
+        Get.back();
+        Future.delayed(Duration(milliseconds: 100));
+        Get.back();
+      } else {
+        Get.back();
+      }
+    },
   );
 }

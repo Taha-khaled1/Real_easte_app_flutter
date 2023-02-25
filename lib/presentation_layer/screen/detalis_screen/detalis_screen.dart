@@ -160,7 +160,8 @@ class PropertyDetalisScreen extends StatelessWidget {
                                 color: Color(0xff6B85B3),
                                 text: 'استعلم الآن',
                                 press: () {
-                                  CustombooTomSheet(context, false, controller);
+                                  CustombooTomSheet(
+                                      context, false, controller, x!.id!);
                                 },
                               ),
                               SizedBox(
@@ -172,7 +173,8 @@ class PropertyDetalisScreen extends StatelessWidget {
                                 color: Colors.redAccent,
                                 text: 'تقديم ابلاغ',
                                 press: () {
-                                  CustombooTomSheet(context, true, controller);
+                                  CustombooTomSheet(
+                                      context, true, controller, x!.id!);
                                 },
                               ),
                             ],

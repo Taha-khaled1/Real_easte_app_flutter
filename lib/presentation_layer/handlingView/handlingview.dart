@@ -14,29 +14,27 @@ class HandlingDataView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusRequest == StatusRequest.loading
-        ? Center(
-            child: SizedBox(
-                child:
-                    Lottie.asset(JsonAssets.loading, width: 250, height: 250)),
-          )
+        ? HandWidget(url: JsonAssets.loading2)
         : statusRequest == StatusRequest.offlinefailure
-            ? Center(
-                child: SizedBox(
-                    child: Lottie.asset(JsonAssets.empty,
-                        width: 250, height: 250)),
-              )
+            ? HandWidget(url: JsonAssets.empty)
             : statusRequest == StatusRequest.serverfailure
-                ? Center(
-                    child: SizedBox(
-                        child: Lottie.asset(JsonAssets.error,
-                            width: 250, height: 250)),
-                  )
-                : statusRequest == StatusRequest.failure
-                    ? Center(
-                        child: SizedBox(
-                            child: Lottie.asset(JsonAssets.empty,
-                                width: 250, height: 250)),
-                      )
+                ? HandWidget(url: JsonAssets.error)
+                : statusRequest == StatusRequest.erorr
+                    ? HandWidget(url: JsonAssets.error)
                     : widget;
+  }
+}
+
+class HandWidget extends StatelessWidget {
+  const HandWidget({
+    Key? key,
+    required this.url,
+  }) : super(key: key);
+  final String url;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Lottie.asset(url, width: 200, height: 150, fit: BoxFit.contain),
+    );
   }
 }

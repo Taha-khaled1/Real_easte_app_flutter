@@ -4,11 +4,12 @@ import 'package:quickalert/quickalert.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
 import 'package:real_easte_app/presentation_layer/components/custombutten.dart';
 import 'package:real_easte_app/presentation_layer/components/customtextfild.dart';
+import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/detalis_screen/controller/PropertDetalisController.dart';
 
-void CustombooTomSheet(
-    BuildContext context, bool isreport, PropertDetalisController controller) {
+void CustombooTomSheet(BuildContext context, bool isreport,
+    PropertDetalisController controller, int id) {
   Get.bottomSheet(
     isScrollControlled: true,
     Container(
@@ -46,7 +47,7 @@ void CustombooTomSheet(
                 return validInput(p0.toString(), 2, 50, 'type');
               },
               onsaved: (p0) {
-                return controller.nameag = p0.toString();
+                return controller.namer = p0.toString();
               },
               titel: 'ادخل اسمك',
               width: double.infinity * 0.85,
@@ -62,7 +63,7 @@ void CustombooTomSheet(
                 return validInput(p0.toString(), 2, 50, 'phone');
               },
               onsaved: (p0) {
-                return controller.phoneag = p0.toString();
+                return controller.phoner = p0.toString();
               },
               titel: 'ادخل رقم هاتف ',
               width: 400,
@@ -78,7 +79,7 @@ void CustombooTomSheet(
                 return validInput(p0.toString(), 2, 50, 'email');
               },
               onsaved: (p0) {
-                return controller.emailag = p0.toString();
+                return controller.emailr = p0.toString();
               },
               titel: 'ادخل الاميل الخاص بك',
               width: double.infinity * 0.85,
@@ -95,7 +96,7 @@ void CustombooTomSheet(
                 return validInput(p0.toString(), 2, 250, 'nono');
               },
               onsaved: (p0) {
-                return controller.descag = p0.toString();
+                return controller.descr = p0.toString();
               },
               titel: isreport
                   ? 'اكتب عن المشكله التي واجهتك بخصوص هذه العقار'
@@ -104,27 +105,29 @@ void CustombooTomSheet(
               height: 70,
             ),
             const SizedBox(height: 15),
-            CustomButton(
-              width: double.infinity,
-              haigh: 60,
-              color: Color(0xff6B85B3),
-              text: isreport ? 'الابلاغ الان' : 'الاستعلام الان',
-              press: () {
-                if (controller.formkeysigin.currentState!.validate()) {
-                  controller.formkeysigin.currentState!.save();
-                  QuickAlert.show(
-                    context: context,
-                    type: QuickAlertType.success,
-                    text: isreport
-                        ? 'تم إرسال الابلاغ بنجاح'
-                        : 'تم إرسال الاستعلام بنجاح ',
-                    onConfirmBtnTap: () {
-                      Get.back();
-                      Future.delayed(Duration(milliseconds: 100));
-                      Get.back();
+            GetBuilder<PropertDetalisController>(
+              builder: (controller) {
+                return HandlingDataView(
+                  statusRequest: isreport
+                      ? controller.statusRequest1
+                      : controller.statusRequest2,
+                  widget: CustomButton(
+                    width: double.infinity,
+                    haigh: 60,
+                    color: Color(0xff6B85B3),
+                    text: isreport ? 'الابلاغ الان' : 'الاستعلام الان',
+                    press: () {
+                      if (controller.formkeysigin.currentState!.validate()) {
+                        controller.formkeysigin.currentState!.save();
+                        if (isreport) {
+                          controller.addReport(id, context);
+                        } else {
+                          controller.addQuery(id, context);
+                        }
+                      }
                     },
-                  );
-                }
+                  ),
+                );
               },
             )
           ],

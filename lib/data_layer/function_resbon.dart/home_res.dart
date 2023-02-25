@@ -47,12 +47,3 @@ getForCounteryRespon() async {
 
   return respons;
 }
-
-getSearchRespon(String inpout) async {
-  Curd curd = Curd();
-  var respons = await curd.getrequest(
-    '${APiMange.search}=$inpout',
-  );
-  print(respons);
-  return respons;
-}

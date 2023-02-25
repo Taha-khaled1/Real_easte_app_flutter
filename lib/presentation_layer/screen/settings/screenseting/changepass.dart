@@ -5,12 +5,12 @@ import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
 import 'package:real_easte_app/presentation_layer/components/custombutten.dart';
 import 'package:real_easte_app/presentation_layer/components/customtextfild.dart';
+import 'package:real_easte_app/presentation_layer/components/show_dialog.dart';
+import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
-import 'package:real_easte_app/presentation_layer/screen/settings/screenseting/changcontroller.dart';
+import 'package:real_easte_app/presentation_layer/screen/settings/controller/settings_controller.dart';
 
-void changepass(BuildContext context) {
-  final ChangePassController changepasscontroller =
-      Get.put(ChangePassController());
+changepass(BuildContext context, SeetingesController controller) {
   Get.bottomSheet(
     isScrollControlled: true,
     Container(
@@ -26,7 +26,7 @@ void changepass(BuildContext context) {
         ),
       ),
       child: Form(
-        key: changepasscontroller.formkeysigin,
+        key: controller.formkeysigin,
         child: ListView(
           children: [
             const SizedBox(
@@ -44,11 +44,12 @@ void changepass(BuildContext context) {
               style: TextStyle(color: ColorManager.kTextblack, fontSize: 20),
             ),
             CustomTextfeild(
+              obsecuer: true,
               valid: (p0) {
                 return validInput(p0.toString(), 2, 50, 'password');
               },
               onsaved: (p0) {
-                return changepasscontroller.oldpass = p0.toString();
+                return controller.oldpass = p0.toString();
               },
               titel: ' كلمة المرور القديم',
               width: double.infinity * 0.85,
@@ -60,11 +61,12 @@ void changepass(BuildContext context) {
               style: TextStyle(color: ColorManager.kTextblack, fontSize: 20),
             ),
             CustomTextfeild(
+              obsecuer: true,
               valid: (p0) {
                 return validInput(p0.toString(), 2, 50, 'password');
               },
               onsaved: (p0) {
-                return changepasscontroller.pasws = p0.toString();
+                return controller.pasws = p0.toString();
               },
               titel: ' كلمة المرور الجديد',
               width: 400,
@@ -76,37 +78,43 @@ void changepass(BuildContext context) {
               style: TextStyle(color: ColorManager.kTextblack, fontSize: 20),
             ),
             CustomTextfeild(
+              obsecuer: true,
               valid: (p0) {
                 return validInput(p0.toString(), 2, 50, 'password');
               },
               onsaved: (p0) {
-                return changepasscontroller.confirempass = p0.toString();
+                return controller.confirempass = p0.toString();
               },
               titel: 'تاكيد  كلمة المرور',
               width: double.infinity * 0.85,
               height: 70,
             ),
             const SizedBox(height: 15),
-            CustomButton(
-              width: double.infinity,
-              haigh: 60,
-              color: ColorManager.primaryColorbu,
-              text: 'حفظ',
-              press: () {
-                if (changepasscontroller.formkeysigin.currentState!
-                    .validate()) {
-                  changepasscontroller.formkeysigin.currentState!.save();
-                  QuickAlert.show(
-                    context: context,
-                    type: QuickAlertType.success,
-                    text: 'تم تغير  كلمة المرور بنجاح',
-                    onConfirmBtnTap: () {
-                      Get.back();
-                      Future.delayed(Duration(milliseconds: 100));
-                      Get.back();
+            GetBuilder<SeetingesController>(
+              builder: (controller) {
+                return HandlingDataView(
+                  statusRequest: controller.statusRequest,
+                  widget: CustomButton(
+                    width: double.infinity,
+                    haigh: 60,
+                    color: ColorManager.primaryColorbu,
+                    text: 'حفظ',
+                    press: () {
+                      if (controller.formkeysigin.currentState!.validate()) {
+                        controller.formkeysigin.currentState!.save();
+                        if (controller.pasws == controller.confirempass) {
+                          controller.changePassordApi(context);
+                        } else {
+                          showDilog(
+                            context,
+                            'كلمة المرور غير متطابقتان',
+                            type: QuickAlertType.error,
+                          );
+                        }
+                      }
                     },
-                  );
-                }
+                  ),
+                );
               },
             )
           ],

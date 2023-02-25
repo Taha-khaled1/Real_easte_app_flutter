@@ -15,6 +15,8 @@ class APiMange {
   static const String addquery = "$baseurl/addenqueris";
   static const String updateviews = "$baseurl/updateviews";
   // static const String login = "$baseurl/auth/login";
+  static const String logout = "$baseurl/logout";
+  static const String changePassword = "$baseurl/changePassword";
   // static const String propertydetalis = "$baseurl/propertydetalis";
   // static const String getfavorute = "$baseurl/wishlists"; //id
   // static const String mostview = "$baseurl/mostview"; //id

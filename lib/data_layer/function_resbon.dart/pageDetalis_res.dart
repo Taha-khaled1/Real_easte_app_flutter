@@ -11,7 +11,7 @@ getAllDetalisRespon(int idproperty) async {
   return respons;
 }
 
-addReport(
+addReporResponst(
     String email, String phone, String name, String description, int id) async {
   Curd curd = Curd();
   var respons = await curd.postrequest(
@@ -21,13 +21,13 @@ addReport(
       "userphone": phone,
       "useremail": email,
       "description": description,
-      "property_id": id,
+      "property_id": id.toString(),
     },
   );
   return respons;
 }
 
-addQuery(
+addQueryRes(
     String email, String phone, String name, String description, int id) async {
   Curd curd = Curd();
   var respons = await curd.postrequest(
@@ -37,7 +37,7 @@ addQuery(
       "userphone": phone,
       "useremail": email,
       "description": description,
-      "property_id": id,
+      "property_id": id.toString(),
     },
   );
   return respons;

@@ -8,10 +8,14 @@ late SharedPreferences sharedPreferences;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   sharedPreferences = await SharedPreferences.getInstance();
+  sharedPreferences.setString(
+    'token',
+    '20|NBifnVdgYVv8kcGpOqrCyYCw6F37HmhzVVbFfi70',
+  );
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => MyApp(), // Wrap your app
+      builder: (context) => MyApp(),
     ),
   );
 }

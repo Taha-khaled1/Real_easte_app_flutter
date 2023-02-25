@@ -18,3 +18,11 @@ getFiltterRespon(String inpout) async {
   print(respons);
   return respons;
 }
+
+getSearchRespon(String inpout, int page) async {
+  Curd curd = Curd();
+  var respons = await curd.getrequest(
+    '${APiMange.search}=$inpout&page=$page',
+  );
+  return respons;
+}

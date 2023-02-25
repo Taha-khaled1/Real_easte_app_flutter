@@ -15,6 +15,7 @@ import 'package:real_easte_app/main.dart';
 Map<String, String> myheaders = {
   'Content-Type': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
+  'Authorization': 'Bearer ${sharedPreferences.getString('token').toString()}',
 };
 Map<String, String> myheaders2 = {
   'Content-Type': 'application/json',

@@ -6,13 +6,14 @@ import 'package:real_easte_app/presentation_layer/screen/authentication_screen/e
 import 'package:real_easte_app/presentation_layer/screen/home_screen/home_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/settings/settings_screen.dart';
 
+int pageIndex = 0;
+
 class Example extends StatefulWidget {
   @override
   _ExampleState createState() => _ExampleState();
 }
 
 class _ExampleState extends State<Example> {
-  int _page = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
@@ -52,13 +53,13 @@ class _ExampleState extends State<Example> {
         animationDuration: Duration(seconds: 1),
         onTap: (index) {
           setState(() {
-            _page = index;
+            pageIndex = index;
           });
         },
         letIndexChange: (index) => true,
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_page),
+        child: _widgetOptions.elementAt(pageIndex),
       ),
     );
   }

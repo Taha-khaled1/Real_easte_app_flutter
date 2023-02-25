@@ -52,7 +52,9 @@ class TypeCard extends StatelessWidget {
                       ? AppStrings.imgs[index]
                       : catogerys[index].imagePath!,
                   haigh: 180,
-                  id: 1,
+                  id: iscity
+                      ? catogerys[index].country
+                      : catogerys[index].id!.toString(),
                   title: iscity
                       ? catogerys[index].country
                       : catogerys[index].name!,

@@ -9,6 +9,7 @@ import 'package:real_easte_app/domin_layer/models/dataCard.dart';
 class HomeController extends GetxController {
   String? propertyType, propertyclassfication, propertydirection, propertyrentl;
   int? roomnumber, tolitnumber;
+  String Search = '';
   changeroomnumbe(int roomnumbe) {
     roomnumber = roomnumbe;
     update();
