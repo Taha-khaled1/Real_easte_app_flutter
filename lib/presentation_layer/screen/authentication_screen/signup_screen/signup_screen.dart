@@ -9,7 +9,6 @@ import 'package:real_easte_app/presentation_layer/components/customtextfild.dart
 import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
-import 'package:real_easte_app/presentation_layer/resources/routes_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/values_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/authentication_screen/login_screen/login_screen.dart';
@@ -197,7 +196,6 @@ class SignupScreen extends StatelessWidget {
                               CustomTextfeild(
                                 icon: Icons.expand_more,
                                 readOnly: true,
-                                inialvalue: controller.country,
                                 onTap: () {
                                   showCountryPicker(
                                     context: context,
@@ -232,6 +230,9 @@ class SignupScreen extends StatelessWidget {
                                       );
                                     },
                                   );
+                                },
+                                onChanged: (p0) {
+                                  controller.country = p0;
                                 },
                                 valid: (p0) {
                                   return validInput(

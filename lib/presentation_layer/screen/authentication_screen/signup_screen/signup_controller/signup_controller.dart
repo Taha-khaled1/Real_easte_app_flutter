@@ -16,9 +16,12 @@ class SignupController extends GetxController {
     update();
   }
 
+  String? x = 'united';
   changeCountry(String xnane) {
     country = xnane;
+    print('cccccc $country');
     update();
+    x = country;
   }
 
   StatusRequest statusRequest = StatusRequest.none;
@@ -27,11 +30,12 @@ class SignupController extends GetxController {
       formkeysigin.currentState!.save();
       statusRequest = StatusRequest.loading;
       update();
+      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx : $country');
       var respon = await RegisterResponse(
-        country: country ?? 'eeeeeeg',
+        country: x!,
         email: email!,
         password: password!,
-        phone: phone ?? '123456',
+        phone: phone!,
         name: name!,
       );
       statusRequest = handlingData(respon);

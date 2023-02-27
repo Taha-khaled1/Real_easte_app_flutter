@@ -11,11 +11,13 @@ class CustomListtile extends StatelessWidget {
     required this.titel,
     this.textStyle,
     this.widget,
+    this.color,
   }) : super(key: key);
   final void Function()? onTap;
   final String? image, titel;
   final TextStyle? textStyle;
   final Widget? widget;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -24,7 +26,7 @@ class CustomListtile extends StatelessWidget {
       title: Text(
         titel!,
         style: MangeStyles().getBoldStyle(
-          color: ColorManager.kTextblack,
+          color: color ?? ColorManager.kTextblack,
           fontSize: FontSize.s18,
         ),
       ),

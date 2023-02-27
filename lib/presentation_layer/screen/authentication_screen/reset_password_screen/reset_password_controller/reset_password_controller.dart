@@ -7,7 +7,6 @@ import 'package:real_easte_app/data_layer/function_resbon.dart/auth_res.dart';
 import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/components/show_dialog.dart';
 import 'package:real_easte_app/presentation_layer/screen/authentication_screen/login_screen/login_screen.dart';
-import 'package:real_easte_app/presentation_layer/screen/authentication_screen/otp_screen/otp_screen.dart';
 
 class ResetPasswordController extends GetxController {
   String? email = sharedPreferences.getString('veryemail'),

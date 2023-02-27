@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:real_easte_app/domin_layer/models/catogeryModels.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/strings_manager.dart';

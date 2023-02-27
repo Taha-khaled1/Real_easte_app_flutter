@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
 import 'package:real_easte_app/domin_layer/models/dataCard.dart';
-import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
-import 'package:real_easte_app/presentation_layer/screen/detalis_screen/detalis_screen.dart';
-import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/homeController.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/card_property.dart';
 
 class MostVisitedRealEstate extends StatelessWidget {

@@ -139,7 +139,10 @@ class PropertyDetalisScreen extends StatelessWidget {
                         SizedBox(
                           height: 20,
                         ),
-                        LocationProperty(),
+                        LocationProperty(
+                          lat: x?.propertyDetails?.latitude ?? 0,
+                          lon: x?.propertyDetails?.longitude ?? 0,
+                        ),
                         SizedBox(
                           height: 20,
                         ),

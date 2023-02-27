@@ -18,9 +18,15 @@ class HandlingDataView extends StatelessWidget {
         : statusRequest == StatusRequest.offlinefailure
             ? HandWidget(url: JsonAssets.empty)
             : statusRequest == StatusRequest.serverfailure
-                ? HandWidget(url: JsonAssets.error)
+                ? SizedBox(
+                    height: 60,
+                    child: Text('يوجد مشكله ما يرجي اعادة المحاوله لاحقا'),
+                  )
                 : statusRequest == StatusRequest.erorr
-                    ? HandWidget(url: JsonAssets.error)
+                    ? SizedBox(
+                        height: 60,
+                        child: Text('يوجد مشكله ما يرجي اعادة المحاوله'),
+                      )
                     : widget;
   }
 }

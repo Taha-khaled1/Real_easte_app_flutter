@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/getImage.dart';
+import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/add_property/add_property_controller/add_property_controller.dart';
 import 'package:real_easte_app/presentation_layer/screen/add_property/widgte/CustomListtile.dart';
 
@@ -17,6 +18,7 @@ void handleAttachmentPressed(BuildContext context,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             CustomListtile(
+              color: ColorManager.ktextblackk,
               widget: Icon(Icons.camera_alt_outlined),
               onTap: () async {
                 Navigator.pop(context);
@@ -34,7 +36,8 @@ void handleAttachmentPressed(BuildContext context,
               titel: 'التقاط صوره',
             ),
             CustomListtile(
-              widget: Icon(Icons.browse_gallery_outlined),
+              color: ColorManager.ktextblackk,
+              widget: Icon(Icons.photo),
               onTap: () {
                 Navigator.pop(context);
                 getImage(ImageSource.gallery, contr: contr);

@@ -81,7 +81,6 @@ class GalleryWidget extends StatelessWidget {
                   ),
                 ),
               );
-              ;
             },
           ),
         ),

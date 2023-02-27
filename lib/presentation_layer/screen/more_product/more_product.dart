@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/models/device_info.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
-import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/card_property.dart';

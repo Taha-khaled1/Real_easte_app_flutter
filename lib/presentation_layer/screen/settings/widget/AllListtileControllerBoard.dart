@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
@@ -14,7 +13,6 @@ import 'package:real_easte_app/presentation_layer/screen/settings/controller/set
 import 'package:real_easte_app/presentation_layer/screen/settings/screenseting/changepass.dart';
 import 'package:real_easte_app/presentation_layer/screen/settings/screenseting/sharescreen.dart';
 import 'package:real_easte_app/presentation_layer/screen/settings/screenseting/terms.dart';
-import 'package:real_easte_app/presentation_layer/screen/settings/widget/ControllerBoardWidget.dart';
 
 class AllListtileControllerBoard extends StatelessWidget {
   const AllListtileControllerBoard({

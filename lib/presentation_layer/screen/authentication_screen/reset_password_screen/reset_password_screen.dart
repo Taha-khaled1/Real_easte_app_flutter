@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quickalert/models/quickalert_type.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
-import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
 import 'package:real_easte_app/presentation_layer/components/customtextfild.dart';
-import 'package:real_easte_app/presentation_layer/components/show_dialog.dart';
 import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';

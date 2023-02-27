@@ -92,7 +92,11 @@ class AddPropertyController extends GetxController {
     try {
       if (StatusRequest.success == statusRequest1) {
         statusRequest1 = StatusRequest.none;
-        showDilog(context, 'تم اضافة العقار بنجاح');
+        if (respon['message'] == 'Success') {
+          showDilog(context, 'تم اضافة العقار بنجاح فانتظر قبوله ');
+        } else {
+          showDilog(context, 'لم يتم رفع العقار يرجي المحاوله مره اخري');
+        }
       } else {
         statusRequest1 = StatusRequest.serverfailure;
       }

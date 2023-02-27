@@ -45,68 +45,79 @@ class CustomTextfeild extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: height,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
-        child: Material(
-          elevation: 5.0,
-          shadowColor: Colors.black,
-          child: TextFormField(
-            style: MangeStyles().getRegularStyle(
-              color: ColorManager.kTextblack,
-              fontSize: FontSize.s17,
+        child: TextFormField(
+          style: MangeStyles().getRegularStyle(
+            color: ColorManager.kTextblack,
+            fontSize: FontSize.s17,
+          ),
+          onTap: onTap,
+          readOnly: readOnly,
+          maxLines: maxLines,
+          initialValue: inialvalue,
+          textDirection: textDirection,
+          obscureText: obsecuer == null ? false : obsecuer!,
+          onSaved: onsaved,
+          validator: valid,
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            prefixIcon: icon != null
+                ? IconButton(
+                    onPressed: iconontap,
+                    icon: Icon(icon),
+                  )
+                : null,
+
+            enabledBorder: isenabledBorder == true
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(
+                      width: 1,
+                      style: isBoarder ?? BorderStyle.solid,
+                      color: ColorManager.kTextlightgray,
+                    ), //<-- SEE HERE
+                  )
+                : OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(
+                      width: 1,
+                      // style: BorderStyle.none,
+                      color: ColorManager.kTextlightgray,
+                    ), //<-- SEE HERE
+                  ),
+
+            errorBorder: OutlineInputBorder(
+              gapPadding: 10,
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                width: 1,
+                // style: BorderStyle.none,
+                color: ColorManager.error,
+              ),
             ),
-            onTap: onTap,
-            readOnly: readOnly,
-            maxLines: maxLines,
-            initialValue: inialvalue,
-            textDirection: textDirection,
-            obscureText: obsecuer == null ? false : obsecuer!,
-            onSaved: onsaved,
-            validator: valid,
-            onChanged: onChanged,
-            decoration: InputDecoration(
-              prefixIcon: icon != null
-                  ? IconButton(
-                      onPressed: iconontap,
-                      icon: Icon(icon),
-                    )
-                  : null,
+            focusedErrorBorder: OutlineInputBorder(
+              gapPadding: 10,
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                width: 1,
+                // style: BorderStyle.none,
+                color: ColorManager.error,
+              ), //<-- SEE HERE
+            ),
 
-              enabledBorder: isenabledBorder == true
-                  ? OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        width: 1,
-                        style: isBoarder ?? BorderStyle.solid,
-                        color: ColorManager.kTextlightgray,
-                      ), //<-- SEE HERE
-                    )
-                  : OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        width: 0,
-                        // style: BorderStyle.none,
-                        color: ColorManager.kTextlightgray,
-                      ), //<-- SEE HERE
-                    ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(
-                  width: 1,
-                  // style: BorderStyle.none,
-                  color: ColorManager.kTextlightgray,
-                ), //<-- SEE HERE
-              ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide.none,
+            ),
 
-              //  enabled: true,
-              filled: true,
-              fillColor: ColorManager.bgColor,
-              hintText: titel,
-              hintStyle: MangeStyles().getRegularStyle(
-                color: ColorManager.kTextblack,
-                fontSize: FontSize.s16,
-              ),
+            //  enabled: true,
+            filled: true,
+            fillColor: ColorManager.bgColor,
+            hintText: titel,
+            hintStyle: MangeStyles().getRegularStyle(
+              color: ColorManager.kTextblack,
+              fontSize: FontSize.s16,
             ),
           ),
         ),

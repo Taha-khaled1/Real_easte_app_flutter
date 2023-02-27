@@ -76,6 +76,7 @@ RegisterResponse({
   required String name,
   required String phone,
 }) async {
+  print(country);
   Curd curd = Curd();
   var respons = await curd.postrequest(
     APiMange.register,

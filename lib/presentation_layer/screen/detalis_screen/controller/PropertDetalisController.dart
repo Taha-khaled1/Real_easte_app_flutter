@@ -5,7 +5,6 @@ import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart
 import 'package:real_easte_app/data_layer/function_resbon.dart/pageDetalis_res.dart';
 import 'package:real_easte_app/domin_layer/models/propertyDetalisModel.dart';
 import 'package:real_easte_app/presentation_layer/components/show_dialog.dart';
-import 'package:real_easte_app/presentation_layer/screen/authentication_screen/login_screen/login_controller/login_controller.dart';
 
 class PropertDetalisController extends GetxController {
   final GlobalKey<FormState> formkeysigin = GlobalKey();
@@ -60,7 +59,11 @@ class PropertDetalisController extends GetxController {
     try {
       if (StatusRequest.success == statusRequest2) {
         statusRequest2 = StatusRequest.none;
-        showDilog(context, 'تم الاستعلام عن العقار بنجاح', butn: true);
+        showDilog(
+          context,
+          'تم الاستعلام عن العقار بنجاح سيتم التواصل معك قريبا',
+          butn: true,
+        );
       } else {
         statusRequest2 = StatusRequest.serverfailure;
       }

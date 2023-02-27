@@ -7,7 +7,6 @@ import 'package:real_easte_app/presentation_layer/components/customtextfild.dart
 import 'package:real_easte_app/presentation_layer/resources/values_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/Filtter/Filtter_controller.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/homeController.dart';
-import 'package:real_easte_app/presentation_layer/screen/more_product/more_product.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/strings_manager.dart';

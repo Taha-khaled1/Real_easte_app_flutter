@@ -7,7 +7,6 @@ import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/components/navbar.dart';
 import 'package:real_easte_app/presentation_layer/screen/authentication_screen/forgot_password_screen/forgot_password_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/authentication_screen/signup_screen/signup_screen.dart';
-import 'package:real_easte_app/presentation_layer/screen/home_screen/home_screen.dart';
 
 class LoginController extends GetxController {
   void gotoForgotPasswordRoute() {
@@ -39,16 +38,34 @@ class LoginController extends GetxController {
       try {
         if (StatusRequest.success == statusRequest) {
           sharedPreferences.remove('token');
-          sharedPreferences.setString('id', respon['user']['id'].toString());
           sharedPreferences.setString(
-              'name', respon['user']['name'].toString());
+            'id',
+            respon['user']['id'].toString(),
+          );
           sharedPreferences.setString(
-              'email', respon['user']['email'].toString());
+            'name',
+            respon['user']['name'].toString(),
+          );
           sharedPreferences.setString(
-              'phone', respon['user']['phone'].toString());
-          sharedPreferences.setString('token', respon['token'].toString());
+            'number_ads',
+            respon['user']['number_ads'].toString(),
+          );
+          sharedPreferences.setString(
+            'email',
+            respon['user']['email'].toString(),
+          );
+          sharedPreferences.setString(
+            'phone',
+            respon['user']['phone'].toString(),
+          );
+          sharedPreferences.setString(
+            'token',
+            respon['token'].toString(),
+          );
           sharedPreferences.setString('step', '2');
-          Get.offAll(() => Example());
+          Get.offAll(
+            () => Example(),
+          );
 
           print('Sucss $respon');
         } else {

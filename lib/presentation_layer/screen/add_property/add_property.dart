@@ -1,16 +1,12 @@
 // ignore_for_file: must_be_immutable
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
 import 'package:real_easte_app/presentation_layer/components/custombutten.dart';
-import 'package:real_easte_app/presentation_layer/components/customtextfild.dart';
 import 'package:real_easte_app/presentation_layer/components/show_dialog.dart';
 import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
@@ -18,7 +14,7 @@ import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/strings_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/add_property/add_property_controller/add_property_controller.dart';
-import 'package:real_easte_app/presentation_layer/screen/add_property/widgte/CustomListtile.dart';
+import 'package:real_easte_app/presentation_layer/screen/add_property/widgte/CustomChecBoxListTile.dart';
 import 'package:real_easte_app/presentation_layer/screen/add_property/widgte/CustomTextWithfield.dart';
 import 'package:real_easte_app/presentation_layer/screen/add_property/widgte/handelAttch.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/homeController.dart';
@@ -61,6 +57,8 @@ class AddProperty extends StatelessWidget {
                         high: 60,
                         text2: 'اسم العقار هنا',
                         onsaved: (p0) {
+                          return null;
+
                           //return controller.name = p0.toString();
                         },
                         valid: (p0) {
@@ -76,6 +74,8 @@ class AddProperty extends StatelessWidget {
                           controller.city = p0.toString();
                         },
                         onsaved: (p0) {
+                          return null;
+
                           //return controller.city = p0.toString();
                         },
                         valid: (p0) {
@@ -405,7 +405,7 @@ class AddProperty extends StatelessWidget {
                                     ),
                                   );
                                 },
-                              ),
+                              )
                             ],
                           );
                         },
@@ -417,66 +417,6 @@ class AddProperty extends StatelessWidget {
             );
           },
         ),
-      ),
-    );
-  }
-}
-
-class CustomChecBoxListTile extends StatefulWidget {
-  const CustomChecBoxListTile({
-    Key? key,
-    required this.name,
-    this.width,
-  }) : super(key: key);
-  final String name;
-  final double? width;
-
-  @override
-  State<CustomChecBoxListTile> createState() => _CustomChecBoxListTileState();
-}
-
-class _CustomChecBoxListTileState extends State<CustomChecBoxListTile> {
-  bool done = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: widget.width ?? 300,
-      // height: 120,
-      child: Row(
-        children: [
-          GetBuilder<AddPropertyController>(
-            init: AddPropertyController(),
-            builder: (controller) {
-              return Checkbox(
-                value: done,
-                onChanged: (value) {
-                  setState(() {
-                    done = value!;
-                    print('$done : $value');
-                  });
-                  if (done == true) {
-                    controller.future!.add(widget.name);
-                  } else {
-                    controller.future!.removeWhere(
-                      (element) => element == widget.name,
-                    );
-                  }
-
-                  print(controller.future);
-                },
-              );
-            },
-          ),
-          Text(
-            widget.name,
-            style: MangeStyles().getRegularStyle(
-              color: ColorManager.kTextblack,
-              fontSize: FontSize.s14,
-            ),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
       ),
     );
   }

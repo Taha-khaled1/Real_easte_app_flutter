@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
 import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quickalert/quickalert.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
 import 'package:real_easte_app/presentation_layer/components/custombutten.dart';
 import 'package:real_easte_app/presentation_layer/components/customtextfild.dart';
