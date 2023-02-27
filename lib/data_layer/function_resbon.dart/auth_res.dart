@@ -1,18 +1,3 @@
-// ignore_for_file: file_names
-
-// loginRes(String email, String pass) async {
-//   Curd curd = Curd();
-//   var respons = await curd.postrequest(
-//     APiMange.login,
-//     {
-//       "email": email,
-//       "password": pass,
-//     },
-//     encode: true,
-//     myheadersres: myheaders,
-//   );
-//   return respons;
-// }
 import 'package:real_easte_app/data_layer/database/connectdatabase.dart';
 import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/resources/msnge_api.dart';
