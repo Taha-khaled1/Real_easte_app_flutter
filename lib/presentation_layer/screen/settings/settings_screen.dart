@@ -6,6 +6,7 @@ import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/add_property/add_property.dart';
+import 'package:real_easte_app/presentation_layer/screen/add_property/widgte/CustomListtile.dart';
 import 'package:real_easte_app/presentation_layer/screen/authentication_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/home_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/settings/controller/settings_controller.dart';

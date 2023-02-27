@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/handling.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
+import 'package:real_easte_app/data_layer/function_resbon.dart/auth_res.dart';
 import 'package:real_easte_app/main.dart';
+import 'package:real_easte_app/presentation_layer/components/navbar.dart';
+import 'package:real_easte_app/presentation_layer/screen/authentication_screen/forgot_password_screen/forgot_password_screen.dart';
+import 'package:real_easte_app/presentation_layer/screen/authentication_screen/signup_screen/signup_screen.dart';
+import 'package:real_easte_app/presentation_layer/screen/home_screen/home_screen.dart';
 
 class LoginController extends GetxController {
-  // void gotoForgotPasswordRoute() {
-  //   Get.toNamed(Routes.forgotPasswordRoute);
-  // }
+  void gotoForgotPasswordRoute() {
+    Get.off(() => ForgotPasswordScreen());
+  }
 
-  // void gotoRegisterRoute() {
-  //   Get.toNamed(Routes.registerRoute);
-  // }
+  void gotoRegisterRoute() {
+    Get.off(() => SignupScreen());
+  }
 
   bool obsecuer = true;
 
@@ -28,38 +33,33 @@ class LoginController extends GetxController {
       formkeysigin.currentState!.save();
       statusRequest = StatusRequest.loading;
       update();
-      // var respon ='x'; await loginRes(emaillog, passwordlog);
-      // statusRequest = handlingData(respon);
-      // try {
-      //   if (StatusRequest.success == statusRequest) {
-      //     if (respon['result'].toString() == 'true') {
-      //       // sharedPreferences.setString('id', respon['user']['id'].toString());
-      //       // sharedPreferences.setString(
-      //       //     'name', respon['user']['name'].toString());
-      //       // sharedPreferences.setString(
-      //       //     'email', respon['user']['email'].toString());
-      //       // sharedPreferences.setString(
-      //       //     'phone', respon['user']['phone'].toString());
-      // sharedPreferences.setString(
-      //     'access_token', respon['access_token'].toString());
-      //       // sharedPreferences.setString('step', '2');
-      //       // Get.toNamed(Routes.homeRoute);
-      //       print('Sucss $respon');
-      //     } else {
-      //       statusRequest = StatusRequest.none;
-      //       print('erorr $respon');
-      //       customSnackBar(respon['message']);
-      //     }
-      //   } else {
-      //     customSnackBar('الحساب غير موجود');
-      //   }
-      // } catch (e) {
-      //   print('catch $e');
-      //   customSnackBar(respon['message']);
-      // }
+      var respon = await logInResponse(passwordlog, emaillog);
+      statusRequest = handlingData(respon);
+      print('$emaillog : $passwordlog');
+      try {
+        if (StatusRequest.success == statusRequest) {
+          sharedPreferences.setString('id', respon['user']['id'].toString());
+          sharedPreferences.setString(
+              'name', respon['user']['name'].toString());
+          sharedPreferences.setString(
+              'email', respon['user']['email'].toString());
+          sharedPreferences.setString(
+              'phone', respon['user']['phone'].toString());
+          sharedPreferences.setString('token', respon['token'].toString());
+          sharedPreferences.setString('step', '2');
+          Get.offAll(() => Example());
+          //    Get.delete<LoginController>();
+          print('Sucss $respon');
+        } else {
+          customSnackBar('الحساب غير موجود');
+          statusRequest = StatusRequest.none;
+        }
+      } catch (e) {
+        print('catch $e');
+        customSnackBar(respon['message']);
+        statusRequest = StatusRequest.none;
+      }
       update();
-      sharedPreferences.setString(
-          'access_token', 'respon[access_token].toString()');
     }
   }
 }

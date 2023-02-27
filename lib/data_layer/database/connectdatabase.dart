@@ -9,9 +9,12 @@ import 'package:real_easte_app/application_layer/ShardFunction/checkenternet.dar
 import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
 import 'package:real_easte_app/application_layer/service/intitservices/services.dart';
 import 'package:real_easte_app/main.dart';
+
 // headers: <String, String>{'Content-Type': 'application/json'},
 // String _basicAuth = 'Basic ${base64Encode(utf8.encode('wael:wael1'))}';
-
+Map<String, String> myheadersfail = {
+  'Authorization': 'Bearer ${sharedPreferences.getString('token').toString()}',
+};
 Map<String, String> myheaders = {
   'Content-Type': 'application/json',
   'X-Requested-With': 'XMLHttpRequest',
@@ -114,8 +117,12 @@ class Curd {
     MultipartRequest requst = http.MultipartRequest('Put', Uri.parse(url));
     int length = await file.length();
     ByteStream stream = http.ByteStream(file.openRead());
-    MultipartFile multefile = http.MultipartFile('uploads/', stream, length,
-        filename: basename(file.path));
+    MultipartFile multefile = http.MultipartFile(
+      'uploads/',
+      stream,
+      length,
+      filename: basename(file.path),
+    );
     requst.headers.addAll(myheaders2);
     requst.files.add(multefile);
     data.forEach((key, value) {
@@ -151,7 +158,9 @@ class Curd {
     });
     StreamedResponse myrequest = await requst.send();
     Response response = await http.Response.fromStream(myrequest);
+    print(response.body);
     if (myrequest.statusCode == 200) {
+      print(response.body);
       return jsonDecode(response.body);
     } else {}
   }

@@ -66,3 +66,82 @@ ChangeUserDataRes(String name, String country, String phone) async {
 
   return respons;
 }
+
+logInResponse(String pass, String email) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.login,
+    {
+      "email": email,
+      "password": pass,
+    },
+    encode: true,
+    myheadersres: myheaders,
+  );
+  return respons;
+}
+
+RegisterResponse({
+  required String email,
+  required String password,
+  required String country,
+  required String name,
+  required String phone,
+}) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.register,
+    {
+      "email": email,
+      "password": password,
+      "name": name,
+      "country": country,
+      "phone": phone
+    },
+    encode: true,
+    myheadersres: myheaders2,
+  );
+  return respons;
+}
+
+forgetPassResponse(email) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.forgotPassword,
+    {
+      "email": email,
+    },
+    encode: true,
+    myheadersres: myheaders2,
+  );
+  return respons;
+}
+
+verfayforgetPassResponse(email, otp) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.verfyemail,
+    {
+      "otp": otp,
+      "email": email,
+    },
+    encode: true,
+    myheadersres: myheaders2,
+  );
+  return respons;
+}
+
+resetPassResponse(email, otp, pass) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.resetPass,
+    {
+      "otp": otp,
+      "password": pass,
+      "email": email,
+    },
+    encode: true,
+    myheadersres: myheaders2,
+  );
+  return respons;
+}

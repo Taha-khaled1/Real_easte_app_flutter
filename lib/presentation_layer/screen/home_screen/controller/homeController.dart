@@ -7,15 +7,19 @@ import 'package:real_easte_app/domin_layer/models/countrymodel.dart';
 import 'package:real_easte_app/domin_layer/models/dataCard.dart';
 
 class HomeController extends GetxController {
-  String? propertyType, propertyclassfication, propertydirection, propertyrentl;
-  int? roomnumber, tolitnumber;
+  String? propertyType,
+      propertyclassfication,
+      propertydirection,
+      propertyrentl,
+      roomnumber,
+      tolitnumber;
   String Search = '';
-  changeroomnumbe(int roomnumbe) {
+  changeroomnumbe(String roomnumbe) {
     roomnumber = roomnumbe;
     update();
   }
 
-  changettolitnumbe(int tolitnumbe) {
+  changettolitnumbe(String tolitnumbe) {
     tolitnumber = tolitnumbe;
     update();
   }
@@ -98,7 +102,8 @@ class HomeController extends GetxController {
         print('----------------------------------');
         catogeryModel = await CatogeryModel.fromJson(response);
         for (Catogerys element in catogeryModel!.catogerys!) {
-          catogerNameslsit.add(element.name!);
+          catogerNameslsit.add(
+              catogeryList(name: element.name!, id: element.id!.toString()));
         }
       } else {
         statusRequest4 = StatusRequest.failure;
@@ -139,4 +144,11 @@ class HomeController extends GetxController {
   }
 }
 
-List<String> catogerNameslsit = [];
+List<catogeryList> catogerNameslsit = [];
+
+class catogeryList {
+  final String name;
+  final String id;
+
+  catogeryList({required this.name, required this.id});
+}

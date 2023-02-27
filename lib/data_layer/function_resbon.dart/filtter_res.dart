@@ -3,19 +3,25 @@
 import 'package:real_easte_app/data_layer/database/connectdatabase.dart';
 import 'package:real_easte_app/presentation_layer/resources/msnge_api.dart';
 
-getFiltterRespon(String inpout) async {
+getFiltterRespon({
+  String? name,
+  String? country,
+  String? numbeer_toilet,
+  String? category_id,
+  String? rental_term,
+  String? numbeer_room,
+  String? price_range,
+  String? property_direction,
+}) async {
   Curd curd = Curd();
   var respons = await curd.getrequest(
     '''${APiMange.filterdata}
-    ?name=&country=USA&status=available&category_id=1&
-    rental_term=monthly&building_type=apartment
-    &property_direction=east&numbeer_room=3
-    &numbeer_toilet=2&price_range=1,10000
-    
-    
+    ?name=$name&country=$country&category_id=$category_id&
+    rental_term=$rental_term&building_type=apartment
+    &property_direction=$property_direction&numbeer_room=$numbeer_room
+    &numbeer_toilet=$numbeer_toilet&price_range=$price_range
     ''',
   );
-  print(respons);
   return respons;
 }
 

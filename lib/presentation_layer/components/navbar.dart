@@ -1,7 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/add_property/add_property.dart';
+import 'package:real_easte_app/presentation_layer/screen/add_property/widgte/aleartToken.dart';
 import 'package:real_easte_app/presentation_layer/screen/authentication_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/home_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/settings/settings_screen.dart';
@@ -52,8 +54,16 @@ class _ExampleState extends State<Example> {
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(seconds: 1),
         onTap: (index) {
+          print(
+            '$pageIndex : $index : ${sharedPreferences.getString('token')}',
+          );
+          if (index == 1 && sharedPreferences.getString('token') == null) {
+            print('cccc');
+            return aleartToken(context);
+          }
           setState(() {
             pageIndex = index;
+            print('$pageIndex : $index');
           });
         },
         letIndexChange: (index) => true,

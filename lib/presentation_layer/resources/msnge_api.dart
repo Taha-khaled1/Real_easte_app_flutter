@@ -13,10 +13,16 @@ class APiMange {
   static const String propertydetalis = "$baseurl/propertydetalis";
   static const String addreport = "$baseurl/addreport";
   static const String addquery = "$baseurl/addenqueris";
+  static const String addproperty = "$baseurl/addproperty";
   static const String updateviews = "$baseurl/updateviews";
   //--------------------------------------------------------------------------------------------------------------------------
   // static const String login = "$baseurl/auth/login";
+  static const String register = "$baseurl/register";
+  static const String login = "$baseurl/login";
+  static const String resetPass = "$baseurl/reset-password";
+  static const String forgotPassword = "$baseurl/forgot-password";
   static const String logout = "$baseurl/logout";
+  static const String verfyemail = "$baseurl/verify-email";
   static const String changePassword = "$baseurl/changePassword";
   static const String userData = "$baseurl/user";
   static const String changeuserData = "$baseurl/updateUserInfo";

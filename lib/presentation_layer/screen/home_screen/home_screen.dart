@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:real_easte_app/data_layer/function_resbon.dart/home_res.dart';
+import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
 import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart';
-import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/propertyType.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/typeCard.dart';
 import 'package:real_easte_app/presentation_layer/screen/more_product/more_product.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
-import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
-import 'package:real_easte_app/presentation_layer/screen/detalis_screen/detalis_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/homeController.dart';
 import 'package:real_easte_app/presentation_layer/screen/Filtter/Filtter_screen.dart';
 import 'package:real_easte_app/presentation_layer/screen/home_screen/widget/MostVisitedRealEstate.dart';
-import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
-import 'package:real_easte_app/presentation_layer/screen/test.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

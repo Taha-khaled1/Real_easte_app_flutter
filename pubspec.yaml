@@ -40,7 +40,7 @@ dependencies:
   get: ^4.6.5
   sqflite: ^2.0.2
   http: ^0.13.5
-  # pinput: ^2.2.16
+  pinput: ^2.2.16
   shared_preferences: ^2.0.15
   flutter_svg: ^1.1.6
   device_preview: ^1.1.0
@@ -59,7 +59,6 @@ dependencies:
   badges: ^3.0.2
   syncfusion_flutter_sliders: ^20.4.49
   internet_connection_checker: ^1.0.0+1
-
 
 
 dev_dependencies:

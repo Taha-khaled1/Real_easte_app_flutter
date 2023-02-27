@@ -8,8 +8,8 @@ import 'package:real_easte_app/presentation_layer/handlingView/handlingview.dart
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/screen/detalis_screen/controller/PropertDetalisController.dart';
 
-void CustombooTomSheet(BuildContext context, bool isreport,
-    PropertDetalisController controller, int id) {
+void CustombooTomSheet(BuildContext context, bool isreport, int id) {
+  PropertDetalisController controller = Get.put(PropertDetalisController());
   Get.bottomSheet(
     isScrollControlled: true,
     Container(

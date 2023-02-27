@@ -109,7 +109,7 @@ class FiltterScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 color: ColorManager.bgColor,
                               ),
-                              child: DropdownButton<int>(
+                              child: DropdownButton<String>(
                                 dropdownColor: ColorManager.white,
                                 hint: Text(
                                   'تحديد عدد الغرف',
@@ -120,8 +120,8 @@ class FiltterScreen extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 value: controller.roomnumber,
-                                items: AppStrings.number.map((int value) {
-                                  return DropdownMenuItem<int>(
+                                items: AppStrings.number.map((String value) {
+                                  return DropdownMenuItem<String>(
                                     value: value,
                                     child: Text(
                                       value.toString(),
@@ -147,7 +147,7 @@ class FiltterScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 color: ColorManager.bgColor,
                               ),
-                              child: DropdownButton<int>(
+                              child: DropdownButton<String>(
                                 dropdownColor: ColorManager.white,
                                 hint: Text(
                                   'تحديد عدد الحمامات',
@@ -158,8 +158,8 @@ class FiltterScreen extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 value: controller.tolitnumber,
-                                items: AppStrings.number.map((int value) {
-                                  return DropdownMenuItem<int>(
+                                items: AppStrings.number.map((String value) {
+                                  return DropdownMenuItem<String>(
                                     value: value,
                                     child: Text(
                                       value.toString(),
@@ -198,11 +198,11 @@ class FiltterScreen extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                             value: controller.propertyType,
-                            items: pro.map((Pro value) {
+                            items: catogerNameslsit.map((catogeryList value) {
                               return DropdownMenuItem<String>(
-                                value: value.name,
+                                value: value.id,
                                 child: Text(
-                                  value.name.toString(),
+                                  value.name,
                                   style: MangeStyles().getBoldStyle(
                                     color: ColorManager.kTextblack,
                                     fontSize: FontSize.s16,

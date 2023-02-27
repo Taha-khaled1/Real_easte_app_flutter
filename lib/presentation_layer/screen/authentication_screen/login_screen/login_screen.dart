@@ -18,6 +18,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoginController loginController = Get.put(LoginController());
     return Scaffold(
+      backgroundColor: ColorManager.white,
       bottomNavigationBar: InfoWidget(
         builder: (context, deviceInfo) {
           return SizedBox(
@@ -27,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                 CustomButton(
                   width: deviceInfo.localWidth * 0.85,
                   haigh: 60,
-                  color: ColorManager.kPrimary,
+                  color: ColorManager.icon,
                   text: 'تسجيل الدخول',
                   press: () {
                     loginController.login();
@@ -40,19 +41,19 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       'عضو جديد ؟',
                       style: MangeStyles().getRegularStyle(
-                        color: ColorManager.kTextlightgray,
+                        color: ColorManager.kTextblack,
                         fontSize: FontSize.s18,
                       ),
                     ),
                     TextButton(
                       onPressed: () {
-                        //  loginController.gotoRegisterRoute();
+                        loginController.gotoRegisterRoute();
                       },
                       child: Text(
                         'سجل الان',
                         textAlign: TextAlign.left,
                         style: MangeStyles().getBoldStyle(
-                          color: ColorManager.kPrimary,
+                          color: ColorManager.icon,
                           fontSize: FontSize.s18,
                         ),
                       ),
@@ -64,10 +65,9 @@ class LoginScreen extends StatelessWidget {
           );
         },
       ),
-      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: ColorManager.white,
       ),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
@@ -90,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                           Text(
                             'تسجيل الدخول',
                             style: MangeStyles().getBoldStyle(
-                                color: ColorManager.kPrimary,
+                                color: ColorManager.kTextblack,
                                 fontSize: FontSize.s27),
                           ),
                           const SizedBox(height: 20),
@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                                   'بريد الكتروني',
                                   textAlign: TextAlign.right,
                                   style: MangeStyles().getBoldStyle(
-                                      color: ColorManager.kPrimary,
+                                      color: ColorManager.kTextblack,
                                       fontSize: FontSize.s18),
                                 ),
                               ),
@@ -112,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                                 icon: Icons.email_outlined,
                                 valid: (p0) {
                                   return validInput(
-                                      p0.toString(), 5, 100, 'adsad');
+                                      p0.toString(), 5, 100, 'email');
                                 },
                                 onsaved: (p0) {
                                   return controller.emaillog = p0!;
@@ -127,7 +127,7 @@ class LoginScreen extends StatelessWidget {
                                 child: Text(
                                   'كلمة السر',
                                   style: MangeStyles().getBoldStyle(
-                                      color: ColorManager.kPrimary,
+                                      color: ColorManager.kTextblack,
                                       fontSize: FontSize.s18),
                                 ),
                               ),
@@ -159,13 +159,13 @@ class LoginScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              //   loginController.gotoForgotPasswordRoute();
+                              loginController.gotoForgotPasswordRoute();
                             },
                             child: Text(
                               'نسيت كلمة السر',
                               textAlign: TextAlign.left,
                               style: MangeStyles().getBoldStyle(
-                                color: ColorManager.kTextlightgray,
+                                color: ColorManager.kTextblack,
                                 fontSize: FontSize.s18,
                               ),
                             ),

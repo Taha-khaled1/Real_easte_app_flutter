@@ -22,7 +22,7 @@ class BottomNavAuth extends StatelessWidget {
               CustomButton(
                 width: deviceInfo.localWidth * 0.85,
                 haigh: 60,
-                color: ColorManager.kPrimary,
+                color: ColorManager.icon,
                 text: text,
                 press: press,
               ),
