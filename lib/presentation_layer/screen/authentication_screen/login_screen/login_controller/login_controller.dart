@@ -38,6 +38,7 @@ class LoginController extends GetxController {
       print('$emaillog : $passwordlog');
       try {
         if (StatusRequest.success == statusRequest) {
+          sharedPreferences.remove('token');
           sharedPreferences.setString('id', respon['user']['id'].toString());
           sharedPreferences.setString(
               'name', respon['user']['name'].toString());
@@ -48,7 +49,7 @@ class LoginController extends GetxController {
           sharedPreferences.setString('token', respon['token'].toString());
           sharedPreferences.setString('step', '2');
           Get.offAll(() => Example());
-          //    Get.delete<LoginController>();
+
           print('Sucss $respon');
         } else {
           customSnackBar('الحساب غير موجود');

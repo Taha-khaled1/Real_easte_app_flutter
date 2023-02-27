@@ -14,17 +14,20 @@
 //   return respons;
 // }
 import 'package:real_easte_app/data_layer/database/connectdatabase.dart';
+import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/resources/msnge_api.dart';
 
 LogOutRes() async {
   Curd curd = Curd();
   var respons = await curd.postrequest(
     APiMange.logout,
-    {},
+    {
+      'Authorization':
+          'Bearer ${sharedPreferences.getString('token').toString()}'
+    },
     encode: true,
-    myheadersres: myheaders,
+    myheadersres: Curd().myheaders,
   );
-  print(respons);
   return respons;
 }
 
@@ -38,7 +41,7 @@ ChangepassRes(oldpass, newpass, newpassConfirm) async {
       "new_password_confirmation": newpassConfirm
     },
     encode: true,
-    myheadersres: myheaders,
+    myheadersres: Curd().myheaders,
   );
   print(respons);
   return respons;
@@ -49,7 +52,7 @@ userDataResp() async {
   var respons = await curd.getrequest(
     APiMange.userData,
     encode: true,
-    myheadersres: myheaders,
+    myheadersres: Curd().myheaders,
   );
   print(respons);
   return respons;
@@ -61,7 +64,7 @@ ChangeUserDataRes(String name, String country, String phone) async {
     APiMange.changeuserData,
     {"name": name, "country": country, "phone": phone},
     encode: true,
-    myheadersres: myheaders,
+    myheadersres: Curd().myheaders,
   );
 
   return respons;
@@ -76,7 +79,7 @@ logInResponse(String pass, String email) async {
       "password": pass,
     },
     encode: true,
-    myheadersres: myheaders,
+    myheadersres: Curd().myheaders,
   );
   return respons;
 }
@@ -99,7 +102,7 @@ RegisterResponse({
       "phone": phone
     },
     encode: true,
-    myheadersres: myheaders2,
+    myheadersres: Curd().myheaders2,
   );
   return respons;
 }
@@ -112,7 +115,7 @@ forgetPassResponse(email) async {
       "email": email,
     },
     encode: true,
-    myheadersres: myheaders2,
+    myheadersres: Curd().myheaders2,
   );
   return respons;
 }
@@ -126,7 +129,7 @@ verfayforgetPassResponse(email, otp) async {
       "email": email,
     },
     encode: true,
-    myheadersres: myheaders2,
+    myheadersres: Curd().myheaders2,
   );
   return respons;
 }
@@ -141,7 +144,7 @@ resetPassResponse(email, otp, pass) async {
       "email": email,
     },
     encode: true,
-    myheadersres: myheaders2,
+    myheadersres: Curd().myheaders2,
   );
   return respons;
 }

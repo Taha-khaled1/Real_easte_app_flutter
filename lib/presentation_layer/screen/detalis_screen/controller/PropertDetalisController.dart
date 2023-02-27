@@ -26,7 +26,7 @@ class PropertDetalisController extends GetxController {
         statusRequest = StatusRequest.failure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest = StatusRequest.erorr;
     }
     update();
   }
@@ -42,10 +42,10 @@ class PropertDetalisController extends GetxController {
         statusRequest1 = StatusRequest.none;
         showDilog(context, 'تم الابلاغ عن العقار بنجاح', butn: true);
       } else {
-        return StatusRequest.serverfailure;
+        statusRequest1 = StatusRequest.serverfailure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest1 = StatusRequest.erorr;
     }
     descr = phoner = emailr = namer = idr = '';
     update();
@@ -62,10 +62,10 @@ class PropertDetalisController extends GetxController {
         statusRequest2 = StatusRequest.none;
         showDilog(context, 'تم الاستعلام عن العقار بنجاح', butn: true);
       } else {
-        return StatusRequest.serverfailure;
+        statusRequest2 = StatusRequest.serverfailure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest2 = StatusRequest.erorr;
     }
     descr = phoner = emailr = namer = idr = '';
     update();

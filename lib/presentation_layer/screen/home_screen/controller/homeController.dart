@@ -48,7 +48,7 @@ class HomeController extends GetxController {
         statusRequest = StatusRequest.failure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest = StatusRequest.erorr;
     }
     update();
   }
@@ -67,7 +67,7 @@ class HomeController extends GetxController {
         statusRequest2 = StatusRequest.failure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest2 = StatusRequest.erorr;
     }
     update();
   }
@@ -86,7 +86,7 @@ class HomeController extends GetxController {
         statusRequest3 = StatusRequest.failure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest3 = StatusRequest.erorr;
     }
     update();
   }
@@ -109,7 +109,7 @@ class HomeController extends GetxController {
         statusRequest4 = StatusRequest.failure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest4 = StatusRequest.erorr;
     }
     update();
   }
@@ -128,7 +128,7 @@ class HomeController extends GetxController {
         statusRequest5 = StatusRequest.failure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest5 = StatusRequest.erorr;
     }
     update();
   }

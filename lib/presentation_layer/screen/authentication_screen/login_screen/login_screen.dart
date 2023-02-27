@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/custombutten.dart';
@@ -16,52 +17,59 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoginController loginController = Get.put(LoginController());
     return Scaffold(
       backgroundColor: ColorManager.white,
-      bottomNavigationBar: InfoWidget(
-        builder: (context, deviceInfo) {
-          return SizedBox(
-            height: 130,
-            child: Column(
-              children: [
-                CustomButton(
-                  width: deviceInfo.localWidth * 0.85,
-                  haigh: 60,
-                  color: ColorManager.icon,
-                  text: 'تسجيل الدخول',
-                  press: () {
-                    loginController.login();
-                  },
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'عضو جديد ؟',
-                      style: MangeStyles().getRegularStyle(
-                        color: ColorManager.kTextblack,
-                        fontSize: FontSize.s18,
+      bottomNavigationBar: GetBuilder<LoginController>(
+        init: LoginController(),
+        initState: (_) {},
+        builder: (_) {
+          return InfoWidget(
+            builder: (context, deviceInfo) {
+              return _.statusRequest == StatusRequest.loading
+                  ? SizedBox()
+                  : SizedBox(
+                      height: 130,
+                      child: Column(
+                        children: [
+                          CustomButton(
+                            width: deviceInfo.localWidth * 0.85,
+                            haigh: 60,
+                            color: ColorManager.icon,
+                            text: 'تسجيل الدخول',
+                            press: () {
+                              _.login();
+                            },
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'عضو جديد ؟',
+                                style: MangeStyles().getRegularStyle(
+                                  color: ColorManager.kTextblack,
+                                  fontSize: FontSize.s18,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  _.gotoRegisterRoute();
+                                },
+                                child: Text(
+                                  'سجل الان',
+                                  textAlign: TextAlign.left,
+                                  style: MangeStyles().getBoldStyle(
+                                    color: ColorManager.icon,
+                                    fontSize: FontSize.s18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        loginController.gotoRegisterRoute();
-                      },
-                      child: Text(
-                        'سجل الان',
-                        textAlign: TextAlign.left,
-                        style: MangeStyles().getBoldStyle(
-                          color: ColorManager.icon,
-                          fontSize: FontSize.s18,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                    );
+            },
           );
         },
       ),
@@ -159,7 +167,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              loginController.gotoForgotPasswordRoute();
+                              controller.gotoForgotPasswordRoute();
                             },
                             child: Text(
                               'نسيت كلمة السر',

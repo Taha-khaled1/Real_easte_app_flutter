@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.real_easte_app">
+    package="com.blossomblue.realestate">
    <application
-        android:label="real_easte_app"
+        android:label="BLOSSOM"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
 

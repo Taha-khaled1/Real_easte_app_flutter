@@ -10,9 +10,6 @@ void main() async {
   sharedPreferences = await SharedPreferences.getInstance();
 
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(),
-    ),
+    const MyApp(),
   );
 }

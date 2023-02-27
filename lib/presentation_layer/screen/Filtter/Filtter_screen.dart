@@ -4,22 +4,22 @@ import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
 import 'package:real_easte_app/presentation_layer/components/custombutten.dart';
 import 'package:real_easte_app/presentation_layer/components/customtextfild.dart';
+import 'package:real_easte_app/presentation_layer/resources/values_manager.dart';
+import 'package:real_easte_app/presentation_layer/screen/Filtter/Filtter_controller.dart';
+import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/homeController.dart';
 import 'package:real_easte_app/presentation_layer/screen/more_product/more_product.dart';
 import 'package:real_easte_app/presentation_layer/resources/color_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/font_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/strings_manager.dart';
 import 'package:real_easte_app/presentation_layer/resources/styles_manager.dart';
-import 'package:real_easte_app/presentation_layer/resources/values_manager.dart';
-import 'package:real_easte_app/presentation_layer/screen/add_property/add_property.dart';
-import 'package:real_easte_app/presentation_layer/screen/home_screen/controller/homeController.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
-import 'package:intl/intl.dart';
 
 class FiltterScreen extends StatelessWidget {
   const FiltterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final FiltterController controller = Get.put(FiltterController());
     return Scaffold(
       backgroundColor: ColorManager.white,
       appBar: appbar('تصفية البيانات'),
@@ -61,6 +61,9 @@ class FiltterScreen extends StatelessWidget {
                   ),
                 ),
                 CustomTextfeild(
+                  onChanged: (p0) {
+                    controller.name = p0.toString();
+                  },
                   valid: (p0) {
                     return null;
                   },
@@ -80,19 +83,22 @@ class FiltterScreen extends StatelessWidget {
                   ),
                 ),
                 CustomTextfeild(
+                  onChanged: (p0) {
+                    controller.country = p0.toString();
+                  },
                   valid: (p0) {
                     return null;
                   },
                   onsaved: (p0) {
-                    return null;
+                    return controller.country = p0.toString();
                   },
                   titel: '',
                   width: deviceInfo.localWidth * 0.85,
                   height: 70,
                 ),
                 const SizedBox(height: 7),
-                GetBuilder<HomeController>(
-                  init: HomeController(),
+                GetBuilder<FiltterController>(
+                  init: FiltterController(),
                   builder: (controller) {
                     return Column(
                       children: [
@@ -119,7 +125,7 @@ class FiltterScreen extends StatelessWidget {
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                value: controller.roomnumber,
+                                value: controller.numbeer_room,
                                 items: AppStrings.number.map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -157,7 +163,7 @@ class FiltterScreen extends StatelessWidget {
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                value: controller.tolitnumber,
+                                value: controller.numbeer_toilet,
                                 items: AppStrings.number.map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -197,7 +203,7 @@ class FiltterScreen extends StatelessWidget {
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
-                            value: controller.propertyType,
+                            value: controller.category_id,
                             items: catogerNameslsit.map((catogeryList value) {
                               return DropdownMenuItem<String>(
                                 value: value.id,
@@ -235,7 +241,7 @@ class FiltterScreen extends StatelessWidget {
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
-                            value: controller.propertyrentl,
+                            value: controller.rental_term,
                             items: AppStrings.timeList.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -265,7 +271,7 @@ class FiltterScreen extends StatelessWidget {
                   color: ColorManager.primaryColorbu,
                   text: 'البحث الان',
                   press: () {
-                    Get.to(() => MoreProductScreen());
+                    controller.goToMoreProduct();
                   },
                 )
               ],
@@ -288,6 +294,7 @@ class _RangeSState extends State<RangeS> {
   SfRangeValues _values = SfRangeValues(40.0, 500.0);
   @override
   Widget build(BuildContext context) {
+    final FiltterController controller = Get.put(FiltterController());
     return SizedBox(
       height: 116,
       width: 200,
@@ -305,6 +312,7 @@ class _RangeSState extends State<RangeS> {
                 _values = values;
                 print(_values.start);
               });
+              controller.price_range = '${_values.start},${_values.end}';
             },
           ),
           SizedBox(

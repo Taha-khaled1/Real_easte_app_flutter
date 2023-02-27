@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
+import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
 import 'package:real_easte_app/main.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
@@ -24,12 +25,14 @@ class ResetPasswordScreen extends StatelessWidget {
         Get.put(ResetPasswordController());
     return Scaffold(
       backgroundColor: ColorManager.white,
-      bottomNavigationBar: BottomNavAuth(
-        press: () {
-          controller.otpVerfay(context: context);
-        },
-        text: 'متابعه',
-      ),
+      bottomNavigationBar: controller.statusRequest == StatusRequest.loading
+          ? SizedBox()
+          : BottomNavAuth(
+              press: () {
+                controller.otpVerfay(context: context);
+              },
+              text: 'متابعه',
+            ),
       appBar: appbar('تعين كلمة السر'),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),

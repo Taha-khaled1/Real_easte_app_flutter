@@ -11,16 +11,11 @@ getFiltterRespon({
   String? rental_term,
   String? numbeer_room,
   String? price_range,
-  String? property_direction,
+  String? page,
 }) async {
   Curd curd = Curd();
   var respons = await curd.getrequest(
-    '''${APiMange.filterdata}
-    ?name=$name&country=$country&category_id=$category_id&
-    rental_term=$rental_term&building_type=apartment
-    &property_direction=$property_direction&numbeer_room=$numbeer_room
-    &numbeer_toilet=$numbeer_toilet&price_range=$price_range
-    ''',
+    '${APiMange.filterdata}?name=$name&country=$country& rental_term=$rental_term&numbeer_room=$numbeer_room &numbeer_toilet=$numbeer_toilet&price_range=$price_range',
   );
   return respons;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/appbar1.dart';
@@ -20,12 +21,14 @@ class ForgotPasswordScreen extends StatelessWidget {
     ForgotPasswordController controller = Get.put(ForgotPasswordController());
     return Scaffold(
       backgroundColor: ColorManager.white,
-      bottomNavigationBar: BottomNavAuth(
-        press: () {
-          controller.forgetPass(context: context);
-        },
-        text: 'متابعه',
-      ),
+      bottomNavigationBar: controller.statusRequest == StatusRequest.loading
+          ? SizedBox()
+          : BottomNavAuth(
+              press: () {
+                controller.forgetPass(context: context);
+              },
+              text: 'متابعه',
+            ),
       appBar: appbar('نسيت كلمة السر'),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),

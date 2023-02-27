@@ -7,31 +7,32 @@ import 'dart:convert';
 import 'package:path/path.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/checkenternet.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
-import 'package:real_easte_app/application_layer/service/intitservices/services.dart';
 import 'package:real_easte_app/main.dart';
 
 // headers: <String, String>{'Content-Type': 'application/json'},
 // String _basicAuth = 'Basic ${base64Encode(utf8.encode('wael:wael1'))}';
-Map<String, String> myheadersfail = {
-  'Authorization': 'Bearer ${sharedPreferences.getString('token').toString()}',
-};
-Map<String, String> myheaders = {
-  'Content-Type': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'Authorization': 'Bearer ${sharedPreferences.getString('token').toString()}',
-};
-Map<String, String> myheaders2 = {
-  'Content-Type': 'application/json',
-  'Authorization':
-      'Bearer ${sharedPreferences.getString('access_token').toString()}',
-};
-
-Map<String, String> myheaders3 = {
-  'Authorization':
-      'Bearer ${sharedPreferences.getString('access_token').toString()}',
-};
 
 class Curd {
+  Map<String, String> myheadersfail = {
+    'Authorization':
+        'Bearer ${sharedPreferences.getString('token').toString()}',
+  };
+  Map<String, String> myheaders = {
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
+    'Authorization':
+        'Bearer ${sharedPreferences.getString('token').toString()}',
+  };
+  Map<String, String> myheaders2 = {
+    'Content-Type': 'application/json',
+    'Authorization':
+        'Bearer ${sharedPreferences.getString('token').toString()}',
+  };
+
+  Map<String, String> myheaders3 = {
+    'Authorization':
+        'Bearer ${sharedPreferences.getString('token').toString()}',
+  };
   getrequest(String url,
       {bool? encode, Map<String, String>? myheadersres}) async {
     try {

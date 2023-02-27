@@ -53,15 +53,18 @@ class AddProperty extends StatelessWidget {
                     //   alignment: WrapAlignment.center,
                     children: [
                       CustomTextWithfield(
+                        onChanged: (p0) {
+                          controller.name = p0.toString();
+                        },
                         text1: 'اسم العقار',
                         width: sized,
                         high: 60,
                         text2: 'اسم العقار هنا',
                         onsaved: (p0) {
-                          return controller.name = p0.toString();
+                          //return controller.name = p0.toString();
                         },
                         valid: (p0) {
-                          return validInput(p0.toString(), 1, 40, 'type');
+                          return validInput(p0.toString(), 1, 100, 'type');
                         },
                       ),
                       CustomTextWithfield(
@@ -69,11 +72,14 @@ class AddProperty extends StatelessWidget {
                         width: sized,
                         text2: 'اسم المدينه هنا',
                         high: 60,
+                        onChanged: (p0) {
+                          controller.city = p0.toString();
+                        },
                         onsaved: (p0) {
-                          return controller.city = p0.toString();
+                          //return controller.city = p0.toString();
                         },
                         valid: (p0) {
-                          return validInput(p0.toString(), 1, 20, 'type');
+                          return validInput(p0.toString(), 1, 100, 'type');
                         },
                       ),
                       CustomTextWithfield(

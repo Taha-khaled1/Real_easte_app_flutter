@@ -15,11 +15,13 @@ class CustomTextWithfield extends StatelessWidget {
     this.onsaved,
     this.width,
     this.high,
+    this.onChanged,
   }) : super(key: key);
   final String? text1, text2;
   final String? Function(String?)? valid;
   final String? Function(String?)? onsaved;
   final double? width, high;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return InfoWidget(
@@ -45,6 +47,7 @@ class CustomTextWithfield extends StatelessWidget {
               width: 10,
             ),
             CustomTextfeild(
+              onChanged: onChanged,
               valid: valid,
               isenabledBorder: false,
               fillColor: ColorManager.bgColor,

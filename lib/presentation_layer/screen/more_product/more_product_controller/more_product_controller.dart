@@ -1,11 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:real_easte_app/data_layer/function_resbon.dart/filtter_res.dart';
 import 'package:real_easte_app/domin_layer/models/moreProperty.dart';
 
 class MoreProductController extends GetxController {
+  String? name = Get.arguments['name'] ?? '';
+  String? country = Get.arguments['country'] ?? '';
+  String? numbeer_toilet = Get.arguments['numbeer_toilet'] ?? '';
+  String? category_id = Get.arguments['category_id'] ?? '';
+  String? rental_term = Get.arguments['rental_term'] ?? '';
+  String? numbeer_room = Get.arguments['numbeer_room'] ?? '';
+  String? price_range = Get.arguments['price_range'] ?? '';
+
   int page = 1;
   PropertyMoreCardModel? propertyCardModel;
   PropertyMoreCardModel? propertyCardModellsload;
@@ -23,7 +30,26 @@ class MoreProductController extends GetxController {
       update();
       page += 1; // Increase page by 1
       try {
-        var response = await getSearchRespon(search, page);
+        var response;
+        if (Get.arguments['page'] == '1') {
+          print('##############################################');
+          response = await getFiltterRespon(
+            category_id: category_id,
+            country: country,
+            name: name,
+            numbeer_room: numbeer_room,
+            numbeer_toilet: numbeer_toilet,
+            price_range: price_range,
+            rental_term: rental_term,
+            page: page.toString(),
+          );
+        } else {
+          print(
+            '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+          );
+          response = await getSearchRespon(search, page);
+        }
+
         propertyCardModellsload =
             await PropertyMoreCardModel.fromJson(response);
 
@@ -68,6 +94,9 @@ class MoreProductController extends GetxController {
     firstLoad();
     update();
     scrollController = ScrollController()..addListener(_loadMore);
+    print(
+      '$name $country $numbeer_toilet $category_id $rental_term $price_range  $numbeer_room',
+    );
     super.onInit();
   }
 }

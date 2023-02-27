@@ -1,6 +1,7 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:real_easte_app/application_layer/ShardFunction/statusrequst.dart';
 import 'package:real_easte_app/application_layer/ShardFunction/valid.dart';
 import 'package:real_easte_app/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:real_easte_app/presentation_layer/components/custombutten.dart';
@@ -20,47 +21,54 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SignupController controller = Get.put(SignupController());
     return Scaffold(
       backgroundColor: ColorManager.white,
-      bottomNavigationBar: InfoWidget(
-        builder: (context, deviceInfo) {
-          return SizedBox(
-            height: 130,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomButton(
-                  width: deviceInfo.localWidth * 0.85,
-                  haigh: 60,
-                  color: ColorManager.icon,
-                  text: 'انشئ حسابك',
-                  press: () {
-                    controller.register(context: context);
-                  },
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Get.off(() => LoginScreen());
-                      },
-                      child: Text(
-                        'هل لديك حساب؟',
-                        textAlign: TextAlign.left,
-                        style: MangeStyles().getBoldStyle(
-                          color: ColorManager.kTextlightgray,
-                          fontSize: FontSize.s18,
-                        ),
+      bottomNavigationBar: GetBuilder<SignupController>(
+        init: SignupController(),
+        initState: (_) {},
+        builder: (_) {
+          return InfoWidget(
+            builder: (context, deviceInfo) {
+              return _.statusRequest == StatusRequest.loading
+                  ? SizedBox()
+                  : SizedBox(
+                      height: 130,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CustomButton(
+                            width: deviceInfo.localWidth * 0.85,
+                            haigh: 60,
+                            color: ColorManager.icon,
+                            text: 'انشئ حسابك',
+                            press: () {
+                              _.register(context: context);
+                            },
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Get.off(() => LoginScreen());
+                                },
+                                child: Text(
+                                  'هل لديك حساب؟',
+                                  textAlign: TextAlign.left,
+                                  style: MangeStyles().getBoldStyle(
+                                    color: ColorManager.kTextlightgray,
+                                    fontSize: FontSize.s18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                    );
+            },
           );
         },
       ),
@@ -68,23 +76,23 @@ class SignupScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: ColorManager.white,
       ),
-      body: Form(
-        key: controller.formkeysigin,
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 15),
-          width: double.infinity,
-          height: double.infinity,
-          child: InfoWidget(
-            builder: (context, deviceInfo) {
-              return Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: deviceInfo.localWidth * AppDeviceSize.m5,
-                ),
-                child: GetBuilder<SignupController>(
-                  builder: (controller) {
-                    return HandlingDataView(
-                      statusRequest: controller.statusRequest,
-                      widget: ListView(
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 15),
+        width: double.infinity,
+        height: double.infinity,
+        child: InfoWidget(
+          builder: (context, deviceInfo) {
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: deviceInfo.localWidth * AppDeviceSize.m5,
+              ),
+              child: GetBuilder<SignupController>(
+                builder: (controller) {
+                  return HandlingDataView(
+                    statusRequest: controller.statusRequest,
+                    widget: Form(
+                      key: controller.formkeysigin,
+                      child: ListView(
                         children: [
                           Align(
                             alignment: Alignment.center,
@@ -279,12 +287,12 @@ class SignupScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                    );
-                  },
-                ),
-              );
-            },
-          ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
     );

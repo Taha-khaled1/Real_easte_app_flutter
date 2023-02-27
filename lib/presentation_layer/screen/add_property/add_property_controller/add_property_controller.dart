@@ -94,10 +94,10 @@ class AddPropertyController extends GetxController {
         statusRequest1 = StatusRequest.none;
         showDilog(context, 'تم اضافة العقار بنجاح');
       } else {
-        return StatusRequest.serverfailure;
+        statusRequest1 = StatusRequest.serverfailure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest1 = StatusRequest.erorr;
     }
 
     update();

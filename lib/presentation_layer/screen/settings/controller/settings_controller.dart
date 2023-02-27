@@ -24,11 +24,12 @@ class SeetingesController extends GetxController {
         statusRequest1 = StatusRequest.none;
         await sharedPreferences.remove('token');
         showDilog(context, 'تم تسجيل الخروج بنجاح');
+        Get.offAll(() => Example());
       } else {
-        return StatusRequest.serverfailure;
+        statusRequest1 = StatusRequest.serverfailure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest1 = StatusRequest.erorr;
     }
 
     update();
@@ -45,10 +46,10 @@ class SeetingesController extends GetxController {
         await sharedPreferences.remove('token');
         showDilog(context, 'تم تغير  كلمة المرور بنجاح');
       } else {
-        return StatusRequest.serverfailure;
+        statusRequest = StatusRequest.serverfailure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest = StatusRequest.erorr;
     }
 
     update();

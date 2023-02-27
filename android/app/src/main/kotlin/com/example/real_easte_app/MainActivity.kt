@@ -1,4 +1,4 @@
-package com.example.real_easte_app
+package com.blossomblue.realestate
 
 import io.flutter.embedding.android.FlutterActivity
 

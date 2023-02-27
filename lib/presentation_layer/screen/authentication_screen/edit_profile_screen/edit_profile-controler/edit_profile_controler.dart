@@ -42,10 +42,10 @@ class EditProfileControler extends GetxController {
         showDilog(context, 'تم تغير البيانت الشخصيه بنجاح');
         // Get.delete<EditProfileControler>();
       } else {
-        return StatusRequest.serverfailure;
+        statusRequest1 = StatusRequest.serverfailure;
       }
     } catch (e) {
-      return StatusRequest.erorr;
+      statusRequest1 = StatusRequest.erorr;
     }
     update();
   }
